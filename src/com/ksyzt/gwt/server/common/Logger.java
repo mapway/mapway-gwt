@@ -1,5 +1,6 @@
 package com.ksyzt.gwt.server.common;
 
+// TODO: Auto-generated Javadoc
 /**
  * Copyright (c) 2005-2007, Paul Tuckey All rights reserved.
  * ==================================================================== Licensed
@@ -32,16 +33,32 @@ package com.ksyzt.gwt.server.common;
 
 public class Logger {
 
+	/** The log. */
 	public static Logger LOG = new Logger();
 
+	/**
+	 * Instantiates a new logger.
+	 */
 	public Logger() {
 
 	}
 
+	/**
+	 * Info.
+	 *
+	 * @param tag the tag
+	 * @param msg the msg
+	 */
 	public void info(String tag, String msg) {
 		System.out.println("[INFO]" + tag + " : " + msg);
 	}
 
+	/**
+	 * Err.
+	 *
+	 * @param tag the tag
+	 * @param msg the msg
+	 */
 	public void err(String tag, String msg) {
 		System.out.println("[ERRO]" + tag + " : " + msg);
 	}

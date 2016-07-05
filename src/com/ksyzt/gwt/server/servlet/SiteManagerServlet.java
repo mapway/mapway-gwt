@@ -14,11 +14,19 @@ import com.ksyzt.gwt.shared.module.AdminUser;
 import com.ksyzt.gwt.shared.module.SiteInformation;
 import com.ksyzt.gwt.shared.module.SystemConst;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class SiteManagerServlet.
+ */
 public class SiteManagerServlet extends RemoteServiceServlet implements
 		ISiteManager {
 
+	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 1L;
 
+	/* (non-Javadoc)
+	 * @see com.ksyzt.gwt.client.service.ISiteManager#updateSiteInformation(com.ksyzt.gwt.shared.module.SiteInformation)
+	 */
 	@Override
 	public SiteInformation updateSiteInformation(SiteInformation info)
 			throws Exception {
@@ -27,18 +35,29 @@ public class SiteManagerServlet extends RemoteServiceServlet implements
 		return info;
 	}
 
+	/* (non-Javadoc)
+	 * @see com.ksyzt.gwt.client.service.ISiteManager#getSiteInformation()
+	 */
 	@Override
 	public SiteInformation getSiteInformation() throws Exception {
 
 		return SiteUtil.getFromMemory(this.getServletContext(), false);
 	}
 
-	/************************************* site rewrite ***********************/
+	/**
+	 * *********************************** site rewrite **********************.
+	 *
+	 * @return the rewrite data
+	 * @throws Exception the exception
+	 */
 	@Override
 	public List<RewriteData> getRewriteData() throws Exception {
 		return SiteUtil.getRewriteDataFromMemory(getServletContext());
 	}
 
+	/* (non-Javadoc)
+	 * @see com.ksyzt.gwt.client.service.ISiteManager#updateRewriteData(com.ksyzt.gwt.client.site.urlrewrite.RewriteData)
+	 */
 	@Override
 	public List<RewriteData> updateRewriteData(RewriteData data)
 			throws Exception {
@@ -61,6 +80,9 @@ public class SiteManagerServlet extends RemoteServiceServlet implements
 		return list;
 	}
 
+	/* (non-Javadoc)
+	 * @see com.ksyzt.gwt.client.service.ISiteManager#deleteRewriteData(com.ksyzt.gwt.client.site.urlrewrite.RewriteData)
+	 */
 	@Override
 	public List<RewriteData> deleteRewriteData(RewriteData data)
 			throws Exception {
@@ -77,7 +99,14 @@ public class SiteManagerServlet extends RemoteServiceServlet implements
 		return list;
 	}
 
-	/******************************* admin login ******************************/
+	/**
+	 * ***************************** admin login *****************************.
+	 *
+	 * @param username the username
+	 * @param pwd the pwd
+	 * @return the admin user
+	 * @throws AdminLoginException the admin login exception
+	 */
 	@Override
 	public AdminUser adminLogin(String username, String pwd)
 			throws AdminLoginException {
@@ -102,6 +131,9 @@ public class SiteManagerServlet extends RemoteServiceServlet implements
 		return u;
 	}
 
+	/* (non-Javadoc)
+	 * @see com.ksyzt.gwt.client.service.ISiteManager#adminUpdate(java.lang.String, java.lang.String)
+	 */
 	@Override
 	public AdminUser adminUpdate(String username, String pwd)
 			throws AdminLoginException {
@@ -121,6 +153,9 @@ public class SiteManagerServlet extends RemoteServiceServlet implements
 		return u;
 	}
 
+	/* (non-Javadoc)
+	 * @see com.ksyzt.gwt.client.service.ISiteManager#checkAdminLogin()
+	 */
 	@Override
 	public AdminUser checkAdminLogin() throws AdminLoginException {
 
@@ -139,6 +174,9 @@ public class SiteManagerServlet extends RemoteServiceServlet implements
 
 	}
 
+	/* (non-Javadoc)
+	 * @see com.ksyzt.gwt.client.service.ISiteManager#quit()
+	 */
 	@Override
 	public void quit() {
 		HttpSession session = perThreadRequest.get().getSession();

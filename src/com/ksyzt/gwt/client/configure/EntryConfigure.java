@@ -17,8 +17,13 @@ import com.ksyzt.gwt.shared.exception.AdminLoginException;
 import com.ksyzt.gwt.shared.module.AdminUser;
 import com.ksyzt.gwt.shared.module.SystemConst;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class EntryConfigure.
+ */
 public class EntryConfigure implements EntryPoint {
 
+	/** The m check value. */
 	private ICheckValue m_check_value = new ICheckValue() {
 
 		@Override
@@ -36,6 +41,7 @@ public class EntryConfigure implements EntryPoint {
 		}
 	};
 
+	/** The m set info. */
 	private MessageHandler m_set_info = new MessageHandler() {
 
 		@Override
@@ -48,10 +54,10 @@ public class EntryConfigure implements EntryPoint {
 		}
 	};
 
+	/** The dlg. */
 	DialogBox dlg;
-	/**
-	 * 检查是否登录
-	 */
+	
+	/** 检查是否登录. */
 	private AsyncCallback<AdminUser> check_login_handler = new AsyncCallback<AdminUser>() {
 
 		@Override
@@ -99,6 +105,7 @@ public class EntryConfigure implements EntryPoint {
 		}
 	};
 
+	/** The dlg login handler. */
 	private MessageHandler dlg_login_handler = new MessageHandler() {
 
 		@Override
@@ -110,6 +117,7 @@ public class EntryConfigure implements EntryPoint {
 		}
 	};
 
+	/** The m on qiut. */
 	private AsyncCallback<Void> m_on_qiut = new AsyncCallback<Void>() {
 
 		@Override
@@ -124,6 +132,7 @@ public class EntryConfigure implements EntryPoint {
 		}
 	};
 
+	/** The m frame quit. */
 	private MessageHandler m_frame_quit = new MessageHandler() {
 
 		@Override
@@ -135,13 +144,22 @@ public class EntryConfigure implements EntryPoint {
 		}
 	};
 
+	/* (non-Javadoc)
+	 * @see com.google.gwt.core.client.EntryPoint#onModuleLoad()
+	 */
 	@Override
 	public void onModuleLoad() {
 
 		SysResource.INSTANCE.getCss().ensureInjected();
 		CommonServerProxy.SITE_MANAGER.checkAdminLogin(check_login_handler);
 	}
+	
+	/** The frame. */
 	SiteFrame frame;
+	
+	/**
+	 * Show frame.
+	 */
 	protected void showFrame() {
 
 		if(frame==null)
@@ -152,6 +170,11 @@ public class EntryConfigure implements EntryPoint {
 		RootLayoutPanel.get().add(frame);
 	}
 
+	/**
+	 * Show login.
+	 *
+	 * @param msg the msg
+	 */
 	public void showLogin(String msg) {
 		sureDialog();
 		dlg.setModal(true);
@@ -164,6 +187,9 @@ public class EntryConfigure implements EntryPoint {
 		dlg.center();
 	}
 
+	/**
+	 * Sure dialog.
+	 */
 	private void sureDialog() {
 		dlg = new DialogBox();
 

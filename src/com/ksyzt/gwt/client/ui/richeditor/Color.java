@@ -1,24 +1,59 @@
 package com.ksyzt.gwt.client.ui.richeditor;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class Color.
+ */
 public class Color 
 {
 
+    /** The Constant WHITE. */
     public final static Color WHITE = new Color(255, 255, 255);
+    
+    /** The Constant LIGHT_GRAY. */
     public final static Color LIGHT_GRAY = new Color(192, 192, 192);
+    
+    /** The Constant GRAY. */
     public final static Color GRAY = new Color(128, 128, 128);
+    
+    /** The Constant DARK_GRAY. */
     public final static Color DARK_GRAY = new Color(64, 64, 64);
+    
+    /** The Constant BLACK. */
     public final static Color BLACK = new Color(0, 0, 0);
+    
+    /** The Constant RED. */
     public final static Color RED = new Color(255, 0, 0);
+    
+    /** The Constant PINK. */
     public final static Color PINK = new Color(255, 175, 175);
+    
+    /** The Constant ORANGE. */
     public final static Color ORANGE = new Color(255, 200, 0);
+    
+    /** The Constant YELLOW. */
     public final static Color YELLOW = new Color(255, 255, 0);
+    
+    /** The Constant GREEN. */
     public final static Color GREEN = new Color(0, 255, 0);
+    
+    /** The Constant MAGENTA. */
     public final static Color MAGENTA = new Color(255, 0, 255);
+    
+    /** The Constant CYAN. */
     public final static Color CYAN = new Color(0, 255, 255);
+    
+    /** The Constant BLUE. */
     public final static Color BLUE = new Color(0, 0, 255);
     
+    /** The b. */
     private int r, g, b;
     
+    /**
+     * Instantiates a new color.
+     *
+     * @param hex the hex
+     */
     public Color (String hex) {
         int rgb = Integer.decode(hex);
         r = (rgb & 0xff0000) >> 16;
@@ -26,6 +61,13 @@ public class Color
         b =  rgb & 0x0000ff;
     }
     
+    /**
+     * Instantiates a new color.
+     *
+     * @param r the r
+     * @param g the g
+     * @param b the b
+     */
     public Color (int r, int g, int b)
     {
         this.r = r;
@@ -33,6 +75,13 @@ public class Color
         this.b = b;
     }
     
+    /**
+     * Instantiates a new color.
+     *
+     * @param h the h
+     * @param s the s
+     * @param l the l
+     */
     public Color (float h, float s, float l) {
         float q = 0;
         if (l < 0.5f)
@@ -52,6 +101,14 @@ public class Color
         this.b = (int) (getComponent(tb, q, p) * 255f);
     }
     
+    /**
+     * Gets the component.
+     *
+     * @param tc the tc
+     * @param q the q
+     * @param p the p
+     * @return the component
+     */
     private float getComponent(float tc, float q, float p) {
         if (tc < 0)
             tc += 1;
@@ -70,21 +127,41 @@ public class Color
         return tc;
     }
     
+    /**
+     * Gets the red.
+     *
+     * @return the red
+     */
     public int getRed ()
     {
         return r;
     }
 
+    /**
+     * Gets the green.
+     *
+     * @return the green
+     */
     public int getGreen ()
     {
         return g;
     }
 
+    /**
+     * Gets the blue.
+     *
+     * @return the blue
+     */
     public int getBlue ()
     {
         return b;
     }
     
+    /**
+     * Gets the hue.
+     *
+     * @return the hue
+     */
     public float getHue() {
         float r = this.r / 255f;
         float g = this.g / 255f;
@@ -106,6 +183,11 @@ public class Color
         }
     }
     
+    /**
+     * Gets the saturation.
+     *
+     * @return the saturation
+     */
     public float getSaturation() {
         float r = this.r / 255f;
         float g = this.g / 255f;
@@ -126,6 +208,11 @@ public class Color
         }
     }
     
+    /**
+     * Gets the lightness.
+     *
+     * @return the lightness
+     */
     public float getLightness() {
         float r = this.r / 255f;
         float g = this.g / 255f;
@@ -134,14 +221,36 @@ public class Color
         return ( getMax(r,g,b)+getMin(r,g,b) ) / 2f;
     }
     
+    /**
+     * Gets the max.
+     *
+     * @param r the r
+     * @param g the g
+     * @param b the b
+     * @return the max
+     */
     private float getMax(float r, float g, float b) {
         return r > g ? (r > b ? r : b) : (g > b ? g : b);
     }
     
+    /**
+     * Gets the min.
+     *
+     * @param r the r
+     * @param g the g
+     * @param b the b
+     * @return the min
+     */
     private float getMin(float r, float g, float b) {
         return r < g ? (r < b ? r : b) : (g < b ? g : b);
     }
 
+    /**
+     * Pad.
+     *
+     * @param in the in
+     * @return the string
+     */
     private String pad (String in)
     {
         if (in.length() == 0) {
@@ -153,6 +262,9 @@ public class Color
         return in;
     }
 
+    /* (non-Javadoc)
+     * @see java.lang.Object#toString()
+     */
     public String toString ()
     {
         return "#"

@@ -25,30 +25,60 @@ import com.ksyzt.gwt.shared.exception.AdminLoginException;
 import com.ksyzt.gwt.shared.module.AdminUser;
 import com.ksyzt.gwt.shared.module.SiteInformation;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class SiteUtil.
+ */
 public class SiteUtil {
+	
+	/** The tag. */
 	private static String tag = "SiteUtil";
 
+	/** The request. */
 	public HttpServletRequest request;
+	
+	/** The response. */
 	public HttpServletResponse response;
 
 	/**
-	 * @param args
-	 * @throws Exception
+	 * The main method.
+	 *
+	 * @param args the arguments
+	 * @throws Exception the exception
 	 */
 	public static void main(String[] args) throws Exception {
 
 	}
 
+	/**
+	 * Instantiates a new site util.
+	 *
+	 * @param request the request
+	 * @param response the response
+	 */
 	public SiteUtil(HttpServletRequest request, HttpServletResponse response) {
 		this.request = request;
 		this.response = response;
 
 	}
 
+	/**
+	 * Gets the site info file.
+	 *
+	 * @param context the context
+	 * @return the site info file
+	 */
 	public static String getSiteInfoFile(ServletContext context) {
 		return getWebInfoPath(context) + "site.json";
 	}
 
+	/**
+	 * Gets the from memory.
+	 *
+	 * @param context the context
+	 * @param reload the reload
+	 * @return the from memory
+	 */
 	public static SiteInformation getFromMemory(ServletContext context,
 			boolean reload) {
 		SiteInformation info = KsyztServer.SITEINFO;
@@ -70,6 +100,13 @@ public class SiteUtil {
 		return info;
 	}
 
+	/**
+	 * Write xml file.
+	 *
+	 * @param doc the doc
+	 * @param file the file
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
 	public void writeXmlFile(Document doc, String file) throws IOException {
 		OutputFormat format = OutputFormat.createPrettyPrint();
 		FileOutputStream fos = new FileOutputStream(new File(file));
@@ -79,12 +116,24 @@ public class SiteUtil {
 		fos.close();
 	}
 
+	/**
+	 * Gets the web info path.
+	 *
+	 * @param context the context
+	 * @return the web info path
+	 */
 	public static String getWebInfoPath(ServletContext context) {
 		String path = context.getRealPath("/");
 		path += "WEB-INF" + File.separator;
 		return path;
 	}
 
+	/**
+	 * Write site info.
+	 *
+	 * @param context the context
+	 * @param info the info
+	 */
 	public static void writeSiteInfo(ServletContext context,
 			SiteInformation info) {
 
@@ -95,14 +144,33 @@ public class SiteUtil {
 
 	}
 
+	/**
+	 * Gets the url rewtire configure file.
+	 *
+	 * @param context the context
+	 * @return the url rewtire configure file
+	 */
 	public static String getUrlRewtireConfigureFile(ServletContext context) {
 		return getWebInfoPath(context) + "urlrewrite.xml";
 	}
 
+	/**
+	 * Gets the admin user file.
+	 *
+	 * @param context the context
+	 * @return the admin user file
+	 */
 	public static String getAdminUserFile(ServletContext context) {
 		return getWebInfoPath(context) + "admin.json";
 	}
 
+	/**
+	 * Confirm admin user.
+	 *
+	 * @param context the context
+	 * @return the admin user
+	 * @throws AdminLoginException the admin login exception
+	 */
 	public static AdminUser confirmAdminUser(ServletContext context)
 			throws AdminLoginException {
 		AdminUser u = null;
@@ -120,6 +188,14 @@ public class SiteUtil {
 		return u;
 	}
 
+	/**
+	 * Write admin user.
+	 *
+	 * @param context the context
+	 * @param user the user
+	 * @return the admin user
+	 * @throws AdminLoginException the admin login exception
+	 */
 	public static AdminUser writeAdminUser(ServletContext context,
 			AdminUser user) throws AdminLoginException {
 
@@ -130,6 +206,12 @@ public class SiteUtil {
 		return user;
 	}
 
+	/**
+	 * Gets the rewrite data from memory.
+	 *
+	 * @param context the context
+	 * @return the rewrite data from memory
+	 */
 	public static List<RewriteData> getRewriteDataFromMemory(
 			ServletContext context) {
 		List<RewriteData> info = KsyztServer.REWRITEDATA;
@@ -170,6 +252,12 @@ public class SiteUtil {
 		return info;
 	}
 
+	/**
+	 * Write rewrite data.
+	 *
+	 * @param context the context
+	 * @param list the list
+	 */
 	public static void writeRewriteData(ServletContext context,
 			List<RewriteData> list) {
 		File f = new File(getUrlRewtireConfigureFile(context));

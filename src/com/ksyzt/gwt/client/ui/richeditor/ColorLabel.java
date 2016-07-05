@@ -14,9 +14,16 @@ import com.ksyzt.gwt.client.event.HasMessageHandlers;
 import com.ksyzt.gwt.client.event.MessageEvent;
 import com.ksyzt.gwt.client.event.MessageHandler;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class ColorLabel.
+ */
 public class ColorLabel extends TextBox implements HasMessageHandlers {
 
+	/** The popup. */
 	private ColorPopup popup;
+	
+	/** The m color event. */
 	private MessageHandler m_color_event = new MessageHandler() {
 
 		@Override
@@ -33,6 +40,9 @@ public class ColorLabel extends TextBox implements HasMessageHandlers {
 		}
 	};
 
+	/**
+	 * Instantiates a new color label.
+	 */
 	public ColorLabel() {
 		this.popup = new ColorPopup();
 		setValue("#ffffff");
@@ -64,12 +74,18 @@ public class ColorLabel extends TextBox implements HasMessageHandlers {
 
 	}
 
+	/* (non-Javadoc)
+	 * @see com.ksyzt.gwt.client.event.HasMessageHandlers#addMessageHandler(com.ksyzt.gwt.client.event.MessageHandler)
+	 */
 	@Override
 	public HandlerRegistration addMessageHandler(MessageHandler handler) {
 		return addHandler(handler, MessageEvent.TYPE);
 
 	}
 
+	/* (non-Javadoc)
+	 * @see com.google.gwt.user.client.ui.ValueBoxBase#setValue(java.lang.Object)
+	 */
 	public void setValue(String value) {
 		Style style = getElement().getStyle();
 		style.setBackgroundColor(value);

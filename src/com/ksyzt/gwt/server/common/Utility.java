@@ -9,8 +9,10 @@ import java.io.InputStream;
 import java.math.BigDecimal;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.security.Timestamp;
 import java.text.BreakIterator;
 import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -21,28 +23,42 @@ import java.util.regex.Pattern;
 
 import org.apache.commons.codec.binary.Base64;
 
+// TODO: Auto-generated Javadoc
 //import sun.io.CharToByteConverter;
 /**
  * String ���߰� ����ַ�ı���ȶ��ַ���?
  * 
  * ʹ��ʾ��
  * 
- * ��֪ȱ�ݣ�
- * 
+ * ��֪ȱ�ݣ�.
+ *
  * @author Sea
  * @version 0.1 Created on 2005-9-13 10:55:05 �޶���ʷ��
- * 
  */
 public class Utility {
 
+	/** The Constant QUOTE_ENCODE. */
 	// Constants used by escapeHTMLTags
 	private static final char[] QUOTE_ENCODE = "&quot;".toCharArray();
+
+	/** The Constant AMP_ENCODE. */
 	private static final char[] AMP_ENCODE = "&amp;".toCharArray();
+
+	/** The Constant LT_ENCODE. */
 	private static final char[] LT_ENCODE = "&lt;".toCharArray();
+
+	/** The Constant GT_ENCODE. */
 	private static final char[] GT_ENCODE = "&gt;".toCharArray();
 
+	/**
+	 * String 2 time.
+	 *
+	 * @param dateString the date string
+	 * @return the java.sql. timestamp
+	 * @throws ParseException the parse exception
+	 */
 	public final static java.sql.Timestamp string2Time(String dateString)
-			throws java.text.ParseException {
+			throws ParseException {
 		DateFormat dateFormat;
 		dateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH);
 		// dateFormat = new SimpleDateFormat("yyyy-MM-dd kk:mm:ss.SSS",
@@ -57,6 +73,13 @@ public class Utility {
 		return dateTime;
 	}
 
+	/**
+	 * Check email.
+	 *
+	 * @param email
+	 *            the email
+	 * @return true, if successful
+	 */
 	public static boolean checkEmail(String email) {
 		String ps = "^([\\w-\\.]+)@[\\w-.]+(\\.?[a-zA-Z]{2,4}$)";
 		Pattern p = Pattern.compile(ps);
@@ -196,14 +219,15 @@ public class Utility {
 	/**
 	 * Replaces all instances of oldString with newString in line. The count
 	 * Integer is updated with number of replaces.
-	 * 
+	 *
 	 * @param line
 	 *            the String to search to perform replacements on
 	 * @param oldString
 	 *            the String that should be replaced by newString
 	 * @param newString
 	 *            the String that will replace all instances of oldString
-	 * 
+	 * @param count
+	 *            the count
 	 * @return a String will all instances of oldString replaced by newString
 	 */
 	public static final String replace(String line, String oldString,
@@ -236,14 +260,10 @@ public class Utility {
 	}
 
 	/**
-	 * This method takes a string which may contain HTML tags (ie, &lt;b&gt;,
-	 * &lt;table&gt;, etc) and converts the '&lt'' and '&gt;' characters to
-	 * their HTML escape sequences.
-	 * 
-	 * @param in
-	 *            the text to be converted.
-	 * @return the input string with the characters '&lt;' and '&gt;' replaced
-	 *         with their HTML escape sequences.
+	 * Escape HTML tags.
+	 *
+	 * @param in            the text to be converted.
+	 * @return String
 	 */
 	public static final String escapeHTMLTags(String in) {
 		if (in == null) {
@@ -532,13 +552,14 @@ public class Utility {
 		return ret.toString();
 	}
 
+
+
 	/**
-	 * Decodes a base64 aray of bytes.
-	 * 
-	 * @param data
-	 *            a base64 encode byte array to decode.
-	 * @return the decoded String.
-	 * @throws IOException
+	 * Decode base 64.
+	 *
+	 * @param base64 the base 64
+	 * @param fname the fname
+	 * @throws IOException Signals that an I/O exception has occurred.
 	 */
 	public static void decodeBase64(String base64, String fname)
 			throws IOException {
@@ -548,12 +569,15 @@ public class Utility {
 	}
 
 	/**
-	 * 编码Base64
-	 * 
+	 * 编码Base64.
+	 *
 	 * @param fname
-	 * @return
+	 *            the fname
+	 * @return the string
 	 * @throws IOException
+	 *             Signals that an I/O exception has occurred.
 	 * @throws IOException
+	 *             Signals that an I/O exception has occurred.
 	 */
 	public static String encodeBase64File(String fname) throws IOException,
 			IOException {
@@ -564,7 +588,10 @@ public class Utility {
 		return new String(out, "GB2312");
 	}
 
+	/** The Constant fillchar. */
 	private static final int fillchar = '=';
+
+	/** The Constant cvt. */
 	private static final String cvt = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 			+ "abcdefghijklmnopqrstuvwxyz" + "0123456789+/";
 
@@ -652,6 +679,13 @@ public class Utility {
 		return new String(randBuffer);
 	}
 
+	/**
+	 * Random digital.
+	 *
+	 * @param length
+	 *            the length
+	 * @return the string
+	 */
 	public static final String randomDigital(int length) {
 		if (length < 1) {
 			return null;
@@ -664,18 +698,39 @@ public class Utility {
 		return new String(randBuffer);
 	}
 
+	/**
+	 * Replace CRLF.
+	 *
+	 * @param p
+	 *            the p
+	 * @return the string
+	 */
 	public static String replaceCRLF(String p) {
 		p = escapeForXML(p);
 		p = p.replace("\n", "<br>");
 		return p;
 	}
 
+	/**
+	 * Replace AMP.
+	 *
+	 * @param p
+	 *            the p
+	 * @return the string
+	 */
 	public static String replaceAMP(String p) {
 
 		p = p.replace("&amp;", "&");
 		return p;
 	}
 
+	/**
+	 * Replace CRLF 2.
+	 *
+	 * @param p
+	 *            the p
+	 * @return the string
+	 */
 	public static String replaceCRLF2(String p) {
 		p = escapeForXML(p);
 		p = p.replace("\\r\\n", "<br>");
@@ -760,15 +815,9 @@ public class Utility {
 	 * 
 	 * This method is under the Jive Open Source Software License and was
 	 * written by Mark Imbriaco.
-	 * 
+	 *
 	 * @param string
 	 *            the String to highlight words in.
-	 * @param words
-	 *            an array of words that should be highlighted in the string.
-	 * @param startHighlight
-	 *            the tag that should be inserted to start highlighting.
-	 * @param endHighlight
-	 *            the tag that should be inserted to end highlighting.
 	 * @return a new String with the specified words highlighted.
 	 */
 	/*
@@ -858,6 +907,7 @@ public class Utility {
 		return replace(string, "&amp;", "&");
 	}
 
+	/** The Constant zeroArray. */
 	private static final char[] zeroArray = "0000000000000000".toCharArray();
 
 	/**
@@ -886,7 +936,9 @@ public class Utility {
 	/**
 	 * Formats a Date as a fifteen character long String made up of the Date's
 	 * padded millisecond value.
-	 * 
+	 *
+	 * @param date
+	 *            the date
 	 * @return a Date encoded as a String.
 	 */
 	public static final String dateToMillis(Date date) {
@@ -894,9 +946,12 @@ public class Utility {
 	}
 
 	/**
-	 * ����һ���ַ�ļ�����ʽ��?MD5 �㷨
-	 * 
+	 * ����һ���ַ�ļ�����ʽ��?MD5 �㷨.
+	 *
 	 * @author Sea
+	 * @param originalStr
+	 *            the original str
+	 * @return the string
 	 */
 	public static String encrypt(String originalStr) {
 		return hash(originalStr);
@@ -927,9 +982,12 @@ public class Utility {
 	// }
 
 	/**
-	 * GBK ��UTF-8ת����
-	 * 
+	 * GBK ��UTF-8ת����.
+	 *
 	 * @author Sea
+	 * @param s
+	 *            the s
+	 * @return the string
 	 */
 	public static String ChineseStringToUTF(String s) {
 		try {
@@ -940,33 +998,65 @@ public class Utility {
 		return s;
 	}
 
+	/**
+	 * Gets the now long.
+	 *
+	 * @return the now long
+	 */
 	public static long getNowLong() {
 		long nCurrentTime = System.currentTimeMillis();
 		return nCurrentTime;
 	}
 
+	/**
+	 * Gets the now date.
+	 *
+	 * @return the now date
+	 */
 	public static java.util.Date getNowDate() {
 		java.util.Date utilDate = new java.util.Date(getNowLong());
 		return utilDate;
 	}
 
+	/**
+	 * Gets the now SQL date.
+	 *
+	 * @return the now SQL date
+	 */
 	public static java.sql.Date getNowSQLDate() {
 		// java.util.Date��java.sql.Date��ת��
 		java.sql.Date sqlDate = new java.sql.Date(getNowLong());
 		return sqlDate;
 	}
 
+	/**
+	 * Gets the now SQL time.
+	 *
+	 * @return the now SQL time
+	 */
 	public static java.sql.Time getNowSQLTime() {
 		java.sql.Time sqlTime = new java.sql.Time(getNowLong());
 		return sqlTime;
 	}
 
+	/**
+	 * Gets the now SQL timestamp.
+	 *
+	 * @return the now SQL timestamp
+	 */
 	// ������������ݿ���������ں�ʱ����
 	public static java.sql.Timestamp getNowSQLTimestamp() {
 		java.sql.Timestamp sqlTimestamp = new java.sql.Timestamp(getNowLong());
 		return sqlTimestamp;
 	}
 
+	/**
+	 * Translate tags.
+	 *
+	 * @param tags
+	 *            the tags
+	 * @return the string
+	 */
 	public static String TranslateTags(String tags) {
 
 		String[] tagss = tags.split(" ");
@@ -979,11 +1069,27 @@ public class Utility {
 		return sb.toString();
 	}
 
+	/**
+	 * Gets the user link.
+	 *
+	 * @param id
+	 *            the id
+	 * @param name
+	 *            the name
+	 * @return the user link
+	 */
 	public static String getUserLink(BigDecimal id, String name) {
 		return "<a href='person.jsp?uid=" + id.toString() + "'>" + name
 				+ "</a>";
 	}
 
+	/**
+	 * Checks if is digital.
+	 *
+	 * @param s
+	 *            the s
+	 * @return true, if is digital
+	 */
 	public static boolean isDigital(String s) {
 		boolean b = true;
 		if (s == null || s.equals(""))
@@ -1000,17 +1106,39 @@ public class Utility {
 		return b;
 	}
 
+	/**
+	 * Gets the date string.
+	 *
+	 * @param l
+	 *            the l
+	 * @return the date string
+	 */
 	public static String getDateString(long l) {
 		String v = new SimpleDateFormat("yyyy-MM-dd HH:mm").format(new Date(l));
 		return v;
 	}
 
+	/**
+	 * Gets the string.
+	 *
+	 * @param o
+	 *            the o
+	 * @return the string
+	 */
 	public static String getString(Object o) {
 		if (o == null)
 			return "";
 		return o.toString();
 	}
 
+	/**
+	 * Write to file.
+	 *
+	 * @param filename
+	 *            the filename
+	 * @param content
+	 *            the content
+	 */
 	public static void WriteToFile(String filename, byte[] content) {
 		try {
 			FileOutputStream fo = new FileOutputStream(filename);
@@ -1025,6 +1153,13 @@ public class Utility {
 		}
 	}
 
+	/**
+	 * Read from file.
+	 *
+	 * @param fileName
+	 *            the file name
+	 * @return the byte[]
+	 */
 	public static byte[] ReadFromFile(String fileName) {
 
 		File ff = new java.io.File(fileName);
@@ -1046,6 +1181,13 @@ public class Utility {
 		return code;
 	}
 
+	/**
+	 * To utf 8 string.
+	 *
+	 * @param s
+	 *            the s
+	 * @return the string
+	 */
 	public static String toUtf8String(String s) {// String Buffer����
 		StringBuffer sb = new StringBuffer();
 		for (int i = 0; i < s.length(); i++) {
@@ -1072,8 +1214,8 @@ public class Utility {
 	}
 
 	/**
-	 * �������ڸ�ʽ����ʱ��
-	 * 
+	 * �������ڸ�ʽ����ʱ��.
+	 *
 	 * @param lon
 	 *            long��������ʱ�䣩
 	 * @param str

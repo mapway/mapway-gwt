@@ -14,8 +14,15 @@ import com.ksyzt.gwt.client.event.HasMessageHandlers;
 import com.ksyzt.gwt.client.event.MessageEvent;
 import com.ksyzt.gwt.client.event.MessageHandler;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class MessageTextBox.
+ */
 public class MessageTextBox extends TextBox implements HasMessageHandlers {
 
+	/* (non-Javadoc)
+	 * @see com.ksyzt.gwt.client.event.HasMessageHandlers#addMessageHandler(com.ksyzt.gwt.client.event.MessageHandler)
+	 */
 	public HandlerRegistration addMessageHandler(MessageHandler handler) {
 		if (m_register != null) {
 			m_register.removeHandler();
@@ -23,7 +30,11 @@ public class MessageTextBox extends TextBox implements HasMessageHandlers {
 		m_register = addHandler(handler, MessageEvent.TYPE);
 		return m_register;
 	}
+	
+	/** The m register. */
 	HandlerRegistration m_register = null;
+	
+	/** The m key down handler. */
 	private KeyDownHandler m_key_down_handler =new KeyDownHandler() {
 		
 	
@@ -36,6 +47,8 @@ public class MessageTextBox extends TextBox implements HasMessageHandlers {
 			
 		}
 	};
+	
+	/** The m focus handler. */
 	private FocusHandler m_focus_handler =new FocusHandler() {
 		
 	
@@ -44,6 +57,8 @@ public class MessageTextBox extends TextBox implements HasMessageHandlers {
 			
 		}
 	};
+	
+	/** The m blur handler. */
 	private BlurHandler m_blur_handler =new BlurHandler() {
 		
 	
@@ -54,6 +69,9 @@ public class MessageTextBox extends TextBox implements HasMessageHandlers {
 		}
 	};
 	
+	/**
+	 * Instantiates a new message text box.
+	 */
 	@UiConstructor
 	public MessageTextBox()
 	{

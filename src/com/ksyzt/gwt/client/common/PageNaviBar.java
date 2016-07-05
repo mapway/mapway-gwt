@@ -16,31 +16,59 @@ import com.ksyzt.gwt.client.event.HasMessageHandlers;
 import com.ksyzt.gwt.client.event.MessageEvent;
 import com.ksyzt.gwt.client.event.MessageHandler;
 
+// TODO: Auto-generated Javadoc
 /**
- * 网页的导航条 首页 上一页 [3/10] 下一页 尾页 【】页GO
- * 
+ * 网页的导航条 首页 上一页 [3/10] 下一页 尾页 【】页GO.
+ *
  * @author 张建设
- * 
  */
 public class PageNaviBar extends HorizontalPanel implements HasMessageHandlers {
 
+	/**
+	 * The Class NaviData.
+	 */
 	public class NaviData implements Serializable {
+		
+		/** The page. */
 		public int page;
+		
+		/** The size. */
 		public int size;
 
+		/**
+		 * Instantiates a new navi data.
+		 *
+		 * @param page the page
+		 * @param size the size
+		 */
 		public NaviData(int page, int size) {
 			this.page = page;
 			this.size = size;
 		}
 	}
 
+	/** The first. */
 	Anchor first;
+	
+	/** The prev. */
 	Anchor prev;
+	
+	/** The next. */
 	Anchor next;
+	
+	/** The last. */
 	Anchor last;
+	
+	/** The txt page. */
 	TextBox txtPage;
+	
+	/** The btn go. */
 	Button btnGo;
+	
+	/** The lb info. */
 	Label lbInfo;
+	
+	/** The m go click. */
 	private ClickHandler m_go_click = new ClickHandler() {
 
 		public void onClick(ClickEvent event) {
@@ -53,6 +81,11 @@ public class PageNaviBar extends HorizontalPanel implements HasMessageHandlers {
 		}
 	};
 
+	/**
+	 * Fire page.
+	 *
+	 * @param page the page
+	 */
 	private void firePage(int page) {
 		NaviData data = new NaviData(page , m_pagesize);
 		MessageEvent ev = new MessageEvent(MessageEvent.PAGE, data);
@@ -60,6 +93,7 @@ public class PageNaviBar extends HorizontalPanel implements HasMessageHandlers {
 		renderState(page, m_pages);
 	}
 
+	/** The m first click. */
 	private ClickHandler m_first_click = new ClickHandler() {
 
 		public void onClick(ClickEvent event) {
@@ -68,6 +102,7 @@ public class PageNaviBar extends HorizontalPanel implements HasMessageHandlers {
 		}
 	};
 
+	/** The m prev click. */
 	private ClickHandler m_prev_click = new ClickHandler() {
 
 		public void onClick(ClickEvent event) {
@@ -75,6 +110,8 @@ public class PageNaviBar extends HorizontalPanel implements HasMessageHandlers {
 			firePage(m_currentpage);
 		}
 	};
+	
+	/** The m next click. */
 	private ClickHandler m_next_click = new ClickHandler() {
 
 		public void onClick(ClickEvent event) {
@@ -82,6 +119,8 @@ public class PageNaviBar extends HorizontalPanel implements HasMessageHandlers {
 			firePage(m_currentpage);
 		}
 	};
+	
+	/** The m last click. */
 	private ClickHandler m_last_click = new ClickHandler() {
 
 		public void onClick(ClickEvent event) {
@@ -90,6 +129,9 @@ public class PageNaviBar extends HorizontalPanel implements HasMessageHandlers {
 		}
 	};
 
+	/**
+	 * Instantiates a new page navi bar.
+	 */
 	@UiConstructor
 	public PageNaviBar() {
 		super();
@@ -97,6 +139,9 @@ public class PageNaviBar extends HorizontalPanel implements HasMessageHandlers {
 		init();
 	}
 
+	/**
+	 * Inits the.
+	 */
 	private void init() {
 		first = new Anchor("首页");
 		first.addClickHandler(m_first_click);
@@ -135,14 +180,29 @@ public class PageNaviBar extends HorizontalPanel implements HasMessageHandlers {
 
 	}
 
+	/* (non-Javadoc)
+	 * @see com.ksyzt.gwt.client.event.HasMessageHandlers#addMessageHandler(com.ksyzt.gwt.client.event.MessageHandler)
+	 */
 	public HandlerRegistration addMessageHandler(MessageHandler handler) {
 		return addHandler(handler, MessageEvent.TYPE);
 	}
 
+	/** The m currentpage. */
 	int m_currentpage;
+	
+	/** The m pages. */
 	int m_pages;
+	
+	/** The m pagesize. */
 	int m_pagesize;
 
+	/**
+	 * Sets the data.
+	 *
+	 * @param currentPage the current page
+	 * @param total the total
+	 * @param pagesize the pagesize
+	 */
 	public void setData(int currentPage, int total, int pagesize) {
 		m_pagesize = pagesize;
 		m_currentpage = currentPage;
@@ -154,6 +214,12 @@ public class PageNaviBar extends HorizontalPanel implements HasMessageHandlers {
 		renderState(currentPage, pages);
 	}
 
+	/**
+	 * Render state.
+	 *
+	 * @param currentPage the current page
+	 * @param pages the pages
+	 */
 	private void renderState(int currentPage, int pages) {
 		if (currentPage >= 0 && currentPage <= pages) {
 			txtPage.setText((currentPage + 1) + "");

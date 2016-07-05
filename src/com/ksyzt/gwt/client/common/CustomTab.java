@@ -14,14 +14,25 @@ import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.Widget;
 import com.ksyzt.gwt.client.event.MessageEvent;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class CustomTab.
+ */
 public class CustomTab extends MessageComposite {
 
+	/** The ui binder. */
 	private static CustomTabUiBinder uiBinder = GWT
 			.create(CustomTabUiBinder.class);
 
+	/**
+	 * The Interface CustomTabUiBinder.
+	 */
 	interface CustomTabUiBinder extends UiBinder<Widget, CustomTab> {
 	}
 
+	/**
+	 * Instantiates a new custom tab.
+	 */
 	@UiConstructor
 	public CustomTab() {
 		initWidget(uiBinder.createAndBindUi(this));
@@ -29,6 +40,9 @@ public class CustomTab extends MessageComposite {
 		setTabAlign(HasHorizontalAlignment.ALIGN_LEFT);
 	}
 
+	/* (non-Javadoc)
+	 * @see com.google.gwt.user.client.ui.UIObject#setStylePrimaryName(java.lang.String)
+	 */
 	@Override
 	public void setStylePrimaryName(String name) {
 		super.setStylePrimaryName(name);
@@ -40,6 +54,11 @@ public class CustomTab extends MessageComposite {
 		}
 	}
 
+	/**
+	 * Sets the tab align.
+	 *
+	 * @param align the new tab align
+	 */
 	public void setTabAlign(HorizontalAlignmentConstant align) {
 		if (HasHorizontalAlignment.ALIGN_RIGHT.getTextAlignString().equals(
 				align.getTextAlignString())) {
@@ -59,25 +78,51 @@ public class CustomTab extends MessageComposite {
 		}
 	}
 
+	/** The box. */
 	@UiField
 	HorizontalPanel box;
+	
+	/** The btns. */
 	@UiField
 	HorizontalPanel btns;
+	
+	/** The lb caption. */
 	@UiField
 	Label lbCaption;
 
+	/**
+	 * Sets the caption.
+	 *
+	 * @param text the new caption
+	 */
 	public void setCaption(String text) {
 		lbCaption.setText(text);
 	}
 
+	/**
+	 * Sets the select index.
+	 *
+	 * @param index the new select index
+	 */
 	public void setSelectIndex(int index) {
 		setSelectIndex(index, false);
 	}
 
+	/**
+	 * Sets the select index.
+	 *
+	 * @param data the new select index
+	 */
 	public void setSelectIndex(Object data) {
 		setSelectIndex(data, false);
 	}
 
+	/**
+	 * Sets the select index.
+	 *
+	 * @param index the index
+	 * @param fireEvent the fire event
+	 */
 	public void setSelectIndex(int index, boolean fireEvent) {
 		if (index >= 0 && index < btns.getWidgetCount()) {
 			Widget a = (Widget) btns.getWidget(index);
@@ -85,6 +130,12 @@ public class CustomTab extends MessageComposite {
 		}
 	}
 
+	/**
+	 * Sets the select index.
+	 *
+	 * @param data the data
+	 * @param fireEvent the fire event
+	 */
 	public void setSelectIndex(Object data, boolean fireEvent) {
 		for (int i = 0; i < btns.getWidgetCount(); i++) {
 			Widget a = (Widget) btns.getWidget(i);
@@ -95,6 +146,12 @@ public class CustomTab extends MessageComposite {
 		}
 	}
 
+	/**
+	 * Make anchor selected.
+	 *
+	 * @param a the a
+	 * @param fireEvent the fire event
+	 */
 	private void makeAnchorSelected(Widget a, boolean fireEvent) {
 		if (!a.getStyleName().equals(
 				this.getStylePrimaryName() + "-BUTTON-SELECED")) {
@@ -115,6 +172,12 @@ public class CustomTab extends MessageComposite {
 		}
 	}
 
+	/**
+	 * Adds the item.
+	 *
+	 * @param text the text
+	 * @param value the value
+	 */
 	public void addItem(String text, Object value) {
 		Label a = new Label(text);
 		a.addClickHandler(m_click);
@@ -124,6 +187,7 @@ public class CustomTab extends MessageComposite {
 		btns.add(a);
 	}
 
+	/** The m click. */
 	private ClickHandler m_click = new ClickHandler() {
 		public void onClick(ClickEvent event) {
 			Widget a = (Widget) event.getSource();

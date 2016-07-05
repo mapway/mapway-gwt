@@ -11,33 +11,57 @@ import com.google.gwt.user.client.ui.Widget;
 import com.ksyzt.gwt.client.common.MessageComposite;
 import com.ksyzt.gwt.client.event.MessageEvent;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class CellUrlMapper.
+ */
 public class CellUrlMapper extends MessageComposite {
 
+	/** The ui binder. */
 	private static CellUrlMapperUiBinder uiBinder = GWT
 			.create(CellUrlMapperUiBinder.class);
 
+	/**
+	 * The Interface CellUrlMapperUiBinder.
+	 */
 	interface CellUrlMapperUiBinder extends UiBinder<Widget, CellUrlMapper> {
 	}
 
+	/**
+	 * Instantiates a new cell url mapper.
+	 */
 	public CellUrlMapper() {
 		initWidget(uiBinder.createAndBindUi(this));
 	}
 
+	/** The txt description. */
 	@UiField
 	TextBox txtDescription;
 
+	/** The txt from. */
 	@UiField
 	TextBox txtFrom;
 
+	/** The txt to. */
 	@UiField
 	TextBox txtTo;
 
+	/**
+	 * Render cell.
+	 *
+	 * @param d the d
+	 */
 	public void renderCell(RewriteData d) {
 		txtDescription.setText(d.desc);
 		txtFrom.setText(d.from);
 		txtTo.setText(d.to);
 	}
 
+	/**
+	 * On modify.
+	 *
+	 * @param e the e
+	 */
 	@UiHandler("btnModify")
 	void onModify(ClickEvent e) {
 		RewriteData d = new RewriteData();
@@ -48,6 +72,11 @@ public class CellUrlMapper extends MessageComposite {
 		fireEvent(ev);
 	}
 
+	/**
+	 * On delete.
+	 *
+	 * @param e the e
+	 */
 	@UiHandler("btnDelete")
 	void onDelete(ClickEvent e) {
 		RewriteData d = new RewriteData();

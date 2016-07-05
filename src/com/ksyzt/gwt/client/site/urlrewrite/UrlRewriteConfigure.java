@@ -20,18 +20,32 @@ import com.ksyzt.gwt.client.ui.dialog.Alert;
 import com.ksyzt.gwt.server.listener.KsyztServer;
 import com.ksyzt.gwt.shared.module.SystemConst;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class UrlRewriteConfigure.
+ */
 public class UrlRewriteConfigure extends MessageComposite {
 
+	/** The ui binder. */
 	private static UrlRewriteConfigureUiBinder uiBinder = GWT
 			.create(UrlRewriteConfigureUiBinder.class);
 
+	/**
+	 * The Interface UrlRewriteConfigureUiBinder.
+	 */
 	interface UrlRewriteConfigureUiBinder extends
 			UiBinder<Widget, UrlRewriteConfigure> {
 	}
 
+	/** The btn new. */
 	@UiField
 	Anchor btnNew;
 
+	/**
+	 * On btn new.
+	 *
+	 * @param e the e
+	 */
 	@UiHandler("btnNew")
 	void onBtnNew(ClickEvent e) {
 		CellUrlMapper cell = new CellUrlMapper();
@@ -41,6 +55,7 @@ public class UrlRewriteConfigure extends MessageComposite {
 		cell.setStyleName("site-Row" + (index++ % 2));
 	}
 
+	/** The m delete handler. */
 	private AsyncCallback<List<RewriteData>> m_delete_handler = new AsyncCallback<List<RewriteData>>() {
 
 		@Override
@@ -54,6 +69,8 @@ public class UrlRewriteConfigure extends MessageComposite {
 
 		}
 	};
+	
+	/** The m update handle. */
 	private AsyncCallback<List<RewriteData>> m_update_handle = new AsyncCallback<List<RewriteData>>() {
 
 		@Override
@@ -69,6 +86,8 @@ public class UrlRewriteConfigure extends MessageComposite {
 
 		}
 	};
+	
+	/** The m row handler. */
 	private MessageHandler m_row_handler = new MessageHandler() {
 
 		@Override
@@ -96,7 +115,10 @@ public class UrlRewriteConfigure extends MessageComposite {
 		}
 	};
 
+	/** The index. */
 	int index = 0;
+	
+	/** The m on data. */
 	private AsyncCallback<List<RewriteData>> m_on_data = new AsyncCallback<List<RewriteData>>() {
 
 		@Override
@@ -111,15 +133,26 @@ public class UrlRewriteConfigure extends MessageComposite {
 		}
 	};
 
+	/**
+	 * Instantiates a new url rewrite configure.
+	 */
 	public UrlRewriteConfigure() {
 		initWidget(uiBinder.createAndBindUi(this));
 	}
 
+	/**
+	 * Inits the.
+	 */
 	public void init() {
 		message("开始请求数据");
 		CommonServerProxy.SITE_MANAGER.getRewriteData(m_on_data);
 	}
 
+	/**
+	 * Render data.
+	 *
+	 * @param result the result
+	 */
 	private void renderData(List<RewriteData> result) {
 		center.clear();
 		index = 0;
@@ -132,6 +165,7 @@ public class UrlRewriteConfigure extends MessageComposite {
 		}
 	}
 
+	/** The center. */
 	@UiField
 	HTMLPanel center;
 }

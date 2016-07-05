@@ -17,7 +17,13 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.ksyzt.gwt.server.common.Util;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class postimage.
+ */
 public class postimage extends HttpServlet {
+	
+	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 1L;
 
 	/**
@@ -67,6 +73,13 @@ public class postimage extends HttpServlet {
 		out.close();
 	}
 
+	/**
+	 * Save image.
+	 *
+	 * @param dstImage the dst image
+	 * @param dstName the dst name
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
 	static void saveImage(BufferedImage dstImage, String dstName)
 			throws IOException {
 		String formatName = dstName.substring(dstName.lastIndexOf(".") + 1);
@@ -168,6 +181,12 @@ public class postimage extends HttpServlet {
 		out.close();
 	}
 
+	/**
+	 * To int.
+	 *
+	 * @param bRefArr the b ref arr
+	 * @return the int
+	 */
 	public static int toInt(byte[] bRefArr) {
 		int iOutcome = 0;
 		byte bLoop;
@@ -190,6 +209,12 @@ public class postimage extends HttpServlet {
 		// Put your code here
 	}
 
+	/**
+	 * Copy.
+	 *
+	 * @param source the source
+	 * @param dest the dest
+	 */
 	public void copy(File source, File dest) {
 		try {
 			int byteread = 0;

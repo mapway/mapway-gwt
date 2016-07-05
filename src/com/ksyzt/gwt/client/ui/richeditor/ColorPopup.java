@@ -20,18 +20,39 @@ import com.ksyzt.gwt.client.event.HasMessageHandlers;
 import com.ksyzt.gwt.client.event.MessageEvent;
 import com.ksyzt.gwt.client.event.MessageHandler;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class ColorPopup.
+ */
 public class ColorPopup extends PopupPanel implements HasMessageHandlers {
 
+	/** The panel. */
 	private FlowPanel panel;
+	
+	/** The hue saturation. */
 	private Image hueSaturation;
+	
+	/** The lightness. */
 	private Image lightness;
+	
+	/** The preview. */
 	private Label preview;
+	
+	/** The down. */
 	private boolean down = false;
 
+	/** The h. */
 	float h = 200;
+	
+	/** The s. */
 	float s = 2 / 3f;
+	
+	/** The l. */
 	float l = 1 / 3f;
 
+	/**
+	 * Instantiates a new color popup.
+	 */
 	ColorPopup() {
 		super(true);
 
@@ -148,10 +169,20 @@ public class ColorPopup extends PopupPanel implements HasMessageHandlers {
 		});
 	}
 
+	/**
+	 * Gets the hex.
+	 *
+	 * @return the hex
+	 */
 	public String getHex() {
 		return new Color(h, s, l).toString();
 	}
 
+	/**
+	 * Sets the hex.
+	 *
+	 * @param colorString the new hex
+	 */
 	public void setHex(String colorString) {
 		if (colorString.startsWith("#") && colorString.length() == 7) {
 			Color rgb = new Color(colorString);
@@ -162,6 +193,11 @@ public class ColorPopup extends PopupPanel implements HasMessageHandlers {
 		}
 	}
 
+	/**
+	 * Gets the text color.
+	 *
+	 * @return the text color
+	 */
 	public String getTextColor() {
 		if (this.l < 0.5) {
 			return "#ffffff";
@@ -170,6 +206,9 @@ public class ColorPopup extends PopupPanel implements HasMessageHandlers {
 		}
 	}
 
+	/**
+	 * Sets the color.
+	 */
 	private void setColor() {
 		Color p = new Color(h, s, l);
 		DOM.setStyleAttribute(preview.getElement(), "backgroundColor",
@@ -180,6 +219,11 @@ public class ColorPopup extends PopupPanel implements HasMessageHandlers {
 
 	}
 
+	/**
+	 * Sets the hue saturation.
+	 *
+	 * @param event the new hue saturation
+	 */
 	private void setHueSaturation(NativeEvent event) {
 		int x = event.getClientX() - hueSaturation.getAbsoluteLeft();
 		int y = event.getClientY() - hueSaturation.getAbsoluteTop();
@@ -194,6 +238,11 @@ public class ColorPopup extends PopupPanel implements HasMessageHandlers {
 		}
 	}
 
+	/**
+	 * Sets the lightness.
+	 *
+	 * @param event the new lightness
+	 */
 	private void setLightness(NativeEvent event) {
 		int y = event.getClientY() - lightness.getAbsoluteTop();
 
@@ -205,6 +254,9 @@ public class ColorPopup extends PopupPanel implements HasMessageHandlers {
 		}
 	}
 
+	/* (non-Javadoc)
+	 * @see com.ksyzt.gwt.client.event.HasMessageHandlers#addMessageHandler(com.ksyzt.gwt.client.event.MessageHandler)
+	 */
 	@Override
 	public HandlerRegistration addMessageHandler(MessageHandler handler) {
 		return addHandler(handler, MessageEvent.TYPE);

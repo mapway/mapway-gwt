@@ -13,10 +13,19 @@ import org.apache.tools.zip.ZipFile;
 
 import com.ksyzt.gwt.server.common.ZipUtility;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class Server.
+ */
 public class Server {
 
 	
 
+	/**
+	 * The main method.
+	 *
+	 * @param args the arguments
+	 */
 	public static void main(String[] args) {
 		
 		

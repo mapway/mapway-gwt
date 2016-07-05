@@ -22,17 +22,16 @@ import org.nutz.json.Json;
 import com.ksyzt.gwt.server.common.Thumbnail;
 import com.ksyzt.gwt.server.common.Util;
 
+// TODO: Auto-generated Javadoc
 /**
- * 文件上传 返回JSON格式
- * 
+ * 文件上传 返回JSON格式.
+ *
  * @author zhangjianshe@gmail.com
- * 
  */
 @SuppressWarnings("deprecation")
 public class GwtFileUpload extends HttpServlet {
-	/**
-	 * 序列值
-	 */
+	
+	/** 序列值. */
 	private static final long serialVersionUID = 1L;
 
 	/**
@@ -269,10 +268,10 @@ public class GwtFileUpload extends HttpServlet {
 	}
 
 	/**
-	 * 是否是图片
-	 * 
-	 * @param extension
-	 * @return
+	 * 是否是图片.
+	 *
+	 * @param extension the extension
+	 * @return true, if is picture
 	 */
 	private boolean isPicture(String extension) {
 		if (extension != null) {
@@ -298,6 +297,12 @@ public class GwtFileUpload extends HttpServlet {
 		}
 	}
 
+	/**
+	 * Gets the base path.
+	 *
+	 * @param request the request
+	 * @return the base path
+	 */
 	public String getBasePath(HttpServletRequest request) {
 		String path = request.getContextPath();
 		String port = "";
@@ -309,6 +314,7 @@ public class GwtFileUpload extends HttpServlet {
 		return basePath;
 	}
 
+	/** The upext. */
 	private String upext = "txt,rar,zip,jpg,jpeg,gif,png,swf,wmv,avi,wma,mp3,mid";
 
 }

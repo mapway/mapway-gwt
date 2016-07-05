@@ -26,30 +26,39 @@ import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
 import com.ksyzt.gwt.server.common.Util;
 
+// TODO: Auto-generated Javadoc
 /**
- * 有进度条的上传
- * 
+ * 有进度条的上传.
+ *
  * @author zhangjianshe@gmail.com
- * 
  */
 public class FileUploaderBase extends HttpServlet {
 
 	
-	/**
-	 * 
-	 */
+	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 1L;
+	
+	/** The ext map. */
 	// 定义允许上传的文件扩展名
 	protected HashMap<String, String> extMap = new HashMap<String, String>();
+	
+	/** The max size. */
 	// 最大文件大小 100 M --测试用
 	protected long maxSize = 500 * 1024 * 1024;
+	
+	/** The config path. */
 	// 上传文件的保存路径
 	protected String configPath = "upload";
 
+	/** The dir temp. */
 	protected String dirTemp = "attached/temp";
 
+	/** The dir name. */
 	protected String dirName = "file";
 
+	/* (non-Javadoc)
+	 * @see javax.servlet.GenericServlet#init()
+	 */
 	public void init() throws ServletException {
 
 		// 定义允许上传的文件扩展名
@@ -62,10 +71,10 @@ public class FileUploaderBase extends HttpServlet {
 	}
 
 	/**
-	 * 文档扩展名
-	 * 
-	 * @param item
-	 * @return
+	 * 文档扩展名.
+	 *
+	 * @param item the item
+	 * @return the extension
 	 */
 	protected String getExtension(FileItem item) {
 		String fileName = item.getName();
@@ -76,10 +85,10 @@ public class FileUploaderBase extends HttpServlet {
 	}
 
 	/**
-	 * 获取文件名
-	 * 
-	 * @param item
-	 * @return
+	 * 获取文件名.
+	 *
+	 * @param item the item
+	 * @return the file name
 	 */
 	protected String getFileName(FileItem item) {
 		String fileName = item.getName();
@@ -93,22 +102,22 @@ public class FileUploaderBase extends HttpServlet {
 	}
 
 	/**
-	 * 获取保存到服务上文件名
-	 * 
-	 * @param item
-	 * @return
+	 * 获取保存到服务上文件名.
+	 *
+	 * @param item the item
+	 * @return the save file name
 	 */
 	protected String getSaveFileName(FileItem item) {
 		return Util.randomString(8) + "." + getFileName(item);
 	}
 
 	/**
-	 * 处理上传文件
-	 * 
-	 * @param request
-	 * @param response
-	 * @throws ServletException
-	 * @throws IOException
+	 * 处理上传文件.
+	 *
+	 * @param request the request
+	 * @param out the out
+	 * @throws ServletException the servlet exception
+	 * @throws IOException Signals that an I/O exception has occurred.
 	 */
 	@SuppressWarnings("unchecked")
 	public void processFileUpload(HttpServletRequest request, PrintWriter out)
@@ -213,13 +222,12 @@ public class FileUploaderBase extends HttpServlet {
 	}
 
 	/**
-	 * 
-	 * 错误信息的处理
-	 * 
-	 * @param request
-	 * @param error
-	 *            -- 1 ： 错误 0 ： 正常 2 : 上传完成
-	 * @param message
+	 * 错误信息的处理.
+	 *
+	 * @param request the request
+	 * @param error            -- 1 ： 错误 0 ： 正常 2 : 上传完成
+	 * @param message the message
+	 * @param filepathname the filepathname
 	 */
 	private void setStatusMsg(HttpServletRequest request, String error,
 			String message, String filepathname) {
@@ -231,11 +239,11 @@ public class FileUploaderBase extends HttpServlet {
 	}
 
 	/**
-	 * 
-	 * 获取状态信息
-	 * 
-	 * @param request
-	 * @param out
+	 * 获取状态信息.
+	 *
+	 * @param request the request
+	 * @param out the out
+	 * @return the status msg
 	 */
 	@SuppressWarnings("unused")
 	private void getStatusMsg(HttpServletRequest request, PrintWriter out) {
@@ -246,6 +254,9 @@ public class FileUploaderBase extends HttpServlet {
 		out.println(status.toJSon());
 	}
 
+	/* (non-Javadoc)
+	 * @see javax.servlet.http.HttpServlet#doPost(javax.servlet.http.HttpServletRequest, javax.servlet.http.HttpServletResponse)
+	 */
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 

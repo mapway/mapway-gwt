@@ -5,17 +5,26 @@ import javax.servlet.http.HttpSession;
 
 import org.apache.commons.fileupload.ProgressListener;
 
+
+// TODO: Auto-generated Javadoc
 /**
- * 上传监听器
- * 
- * @author
- * 
+ * 上传监听器.
+ *
+ * @author zhangjianshe@gmail.com
  */
 public class FileUploadListener implements ProgressListener {
 
+	/** The session. */
 	private HttpSession session;
+	
+	/** The mega bytes. */
 	private long megaBytes = -1;
 
+	/**
+	 * Instantiates a new file upload listener.
+	 *
+	 * @param request the request
+	 */
 	public FileUploadListener(HttpServletRequest request) {
 		session = request.getSession();
 		FileUploadStatus newUploadStatus = new FileUploadStatus();
@@ -23,9 +32,11 @@ public class FileUploadListener implements ProgressListener {
 	}
 
 	/**
-	 * 
-	 * 为了进度条监听器不会引起性能问题 解决方案,是减少进步条的活动数 比如，只有当上传了1兆字节的时候才反馈给用户
-	 * 
+	 * 为了进度条监听器不会引起性能问题 解决方案,是减少进步条的活动数 比如，只有当上传了1兆字节的时候才反馈给用户.
+	 *
+	 * @param pBytesRead the bytes read
+	 * @param pContentLength the content length
+	 * @param pItems the items
 	 */
 	public void update(long pBytesRead, long pContentLength, int pItems) {
 		/*

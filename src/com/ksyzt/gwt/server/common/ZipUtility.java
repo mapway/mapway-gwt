@@ -13,19 +13,33 @@ import java.util.zip.CheckedInputStream;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 
+// TODO: Auto-generated Javadoc
 /**
- * ZIP压缩工具
- * 
+ * ZIP压缩工具.
+ *
  * @author 梁栋
  * @since 1.0
  */
 public class ZipUtility {
 
+	/** The Constant EXT. */
 	public static final String EXT = ".zip";
+	
+	/** The Constant BASE_DIR. */
 	private static final String BASE_DIR = "";
+	
+	/** The Constant PATH. */
 	private static final String PATH = File.separator;
+	
+	/** The Constant BUFFER. */
 	private static final int BUFFER = 1024;
 
+	/**
+	 * Gets the class file.
+	 *
+	 * @param clazz the clazz
+	 * @return the class file
+	 */
 	public static String getClassFile(Class clazz) {
 		String url;
 		try {
@@ -45,10 +59,11 @@ public class ZipUtility {
 	}
 
 	/**
-	 * 得到类的路径，例如E:/workspace/JavaGUI/bin/com/util
-	 * 
-	 * @return
-	 * @throws java.lang.Exception
+	 * 得到类的路径，例如E:/workspace/JavaGUI/bin/com/util.
+	 *
+	 * @param clazz the clazz
+	 * @return the class path
+	 * @throws Exception the exception
 	 */
 	public static String getClassPath(Class clazz) throws Exception {
 		try {
@@ -82,12 +97,12 @@ public class ZipUtility {
 	}
 
 	/**
-	 * 文件 解压缩
-	 * 
-	 * @param srcPath
-	 *            源文件路径
-	 * 
-	 * @throws Exception
+	 * 文件 解压缩.
+	 *
+	 * @param srcPath            源文件路径
+	 * @param sourcepath the sourcepath
+	 * @param replacepath the replacepath
+	 * @throws Exception the exception
 	 */
 	public static void decompress(String srcPath, String sourcepath,
 			String replacepath) throws Exception {
@@ -97,10 +112,12 @@ public class ZipUtility {
 	}
 
 	/**
-	 * 解压缩
-	 * 
-	 * @param srcFile
-	 * @throws Exception
+	 * 解压缩.
+	 *
+	 * @param srcFile the src file
+	 * @param sourcepath the sourcepath
+	 * @param replacepath the replacepath
+	 * @throws Exception the exception
 	 */
 	public static void decompress(File srcFile, String sourcepath,
 			String replacepath) throws Exception {
@@ -109,11 +126,13 @@ public class ZipUtility {
 	}
 
 	/**
-	 * 解压缩
-	 * 
-	 * @param srcFile
-	 * @param destFile
-	 * @throws Exception
+	 * 解压缩.
+	 *
+	 * @param srcFile the src file
+	 * @param destFile the dest file
+	 * @param sourcepath the sourcepath
+	 * @param replacepath the replacepath
+	 * @throws Exception the exception
 	 */
 	public static void decompress(File srcFile, File destFile,
 			String sourcepath, String replacepath) throws Exception {
@@ -130,11 +149,13 @@ public class ZipUtility {
 	}
 
 	/**
-	 * 解压缩
-	 * 
-	 * @param srcFile
-	 * @param destPath
-	 * @throws Exception
+	 * 解压缩.
+	 *
+	 * @param srcFile the src file
+	 * @param destPath the dest path
+	 * @param sourcepath the sourcepath
+	 * @param replacepath the replacepath
+	 * @throws Exception the exception
 	 */
 	public static void decompress(File srcFile, String destPath,
 			String sourcepath, String replacepath) throws Exception {
@@ -143,13 +164,13 @@ public class ZipUtility {
 	}
 
 	/**
-	 * 文件 解压缩
-	 * 
-	 * @param srcPath
-	 *            源文件路径
-	 * @param destPath
-	 *            目标文件路径
-	 * @throws Exception
+	 * 文件 解压缩.
+	 *
+	 * @param srcPath            源文件路径
+	 * @param destPath            目标文件路径
+	 * @param sourcePath the source path
+	 * @param replacepath the replacepath
+	 * @throws Exception the exception
 	 */
 	public static void decompress(String srcPath, String destPath,
 			String sourcePath, String replacepath) throws Exception {
@@ -159,13 +180,13 @@ public class ZipUtility {
 	}
 
 	/**
-	 * 文件 解压缩
-	 * 
-	 * @param destFile
-	 *            目标文件
-	 * @param zis
-	 *            ZipInputStream
-	 * @throws Exception
+	 * 文件 解压缩.
+	 *
+	 * @param destFile            目标文件
+	 * @param zis            ZipInputStream
+	 * @param sourcepath the sourcepath
+	 * @param replacepath the replacepath
+	 * @throws Exception the exception
 	 */
 	private static void decompress(File destFile, ZipInputStream zis,
 			String sourcepath, String replacepath) throws Exception {
@@ -228,10 +249,9 @@ public class ZipUtility {
 	 * 文件探针
 	 * 
 	 * 
-	 * 当父目录不存在时，创建目录！
-	 * 
-	 * 
-	 * @param dirFile
+	 * 当父目录不存在时，创建目录！.
+	 *
+	 * @param dirFile the dir file
 	 */
 	private static void fileProber(File dirFile) {
 
@@ -247,13 +267,11 @@ public class ZipUtility {
 	}
 
 	/**
-	 * 文件解压缩
-	 * 
-	 * @param destFile
-	 *            目标文件
-	 * @param zis
-	 *            ZipInputStream
-	 * @throws Exception
+	 * 文件解压缩.
+	 *
+	 * @param destFile            目标文件
+	 * @param zis            ZipInputStream
+	 * @throws Exception the exception
 	 */
 	private static void decompressFile(File destFile, ZipInputStream zis)
 			throws Exception {

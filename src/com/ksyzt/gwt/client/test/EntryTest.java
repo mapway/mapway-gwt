@@ -6,8 +6,15 @@ import com.google.gwt.user.client.ui.RootPanel;
 import com.ksyzt.gwt.client.ui.richeditor.EditOption;
 import com.ksyzt.gwt.client.ui.richeditor.XhEditor;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class EntryTest.
+ */
 public class EntryTest implements EntryPoint {
 
+	/* (non-Javadoc)
+	 * @see com.google.gwt.core.client.EntryPoint#onModuleLoad()
+	 */
 	@Override
 	public void onModuleLoad() {
 

@@ -27,46 +27,68 @@ import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.Widget;
 import com.ksyzt.gwt.client.common.MessageComposite;
 
+// TODO: Auto-generated Javadoc
 /**
- * 文件上传
- * 
+ * 文件上传.
+ *
  * @author zhangjianshe@gmail.com
- * 
  */
 public class SingleFileUpload extends MessageComposite {
 
+	/** The ui binder. */
 	private static SingleFileUploadUiBinder uiBinder = GWT
 			.create(SingleFileUploadUiBinder.class);
 
+	/**
+	 * The Interface SingleFileUploadUiBinder.
+	 */
 	interface SingleFileUploadUiBinder extends
 			UiBinder<Widget, SingleFileUpload> {
 	}
 
+	/**
+	 * Instantiates a new single file upload.
+	 */
 	public SingleFileUpload() {
 		initWidget(uiBinder.createAndBindUi(this));
 		init();
 	}
 
+	/* (non-Javadoc)
+	 * @see com.google.gwt.user.client.ui.UIObject#setTitle(java.lang.String)
+	 */
 	public void setTitle(String caption) {
 		lbTitle.setText(caption);
 	}
 
+	/** The file. */
 	@UiField
 	FileUpload file;
 
+	/** The frm upload. */
 	@UiField
 	FormPanel frmUpload;
+	
+	/** The lb message. */
 	@UiField
 	Label lbMessage;
+	
+	/** The lb title. */
 	@UiField
 	Label lbTitle;
+	
+	/** The btn submit. */
 	@UiField
 	Button btnSubmit;
 
+	/* (non-Javadoc)
+	 * @see com.ksyzt.gwt.client.common.MessageComposite#message(java.lang.String)
+	 */
 	public void message(String msg) {
 		lbMessage.setText(msg);
 	}
 
+	/** The m file change. */
 	private ChangeHandler mFileChange = new ChangeHandler() {
 
 		@Override
@@ -80,6 +102,7 @@ public class SingleFileUpload extends MessageComposite {
 		}
 	};
 
+	/** The m submit handler. */
 	private SubmitHandler mSubmitHandler = new SubmitHandler() {
 
 		@Override
@@ -88,6 +111,7 @@ public class SingleFileUpload extends MessageComposite {
 		}
 	};
 
+	/** The m complete. */
 	private SubmitCompleteHandler mComplete = new SubmitCompleteHandler() {
 
 		@Override
@@ -96,12 +120,13 @@ public class SingleFileUpload extends MessageComposite {
 		}
 	};
 
+	/** The m timer. */
 	Timer mTimer ;
 
 	/**
-	 * 设置监听上传进度
-	 * 
-	 * @param b
+	 * 设置监听上传进度.
+	 *
+	 * @param b the b
 	 */
 	private void enableWatch(boolean b) {
 		final String url=GWT.getModuleBaseURL() + "../fileuploader?uploadStatus=true";
@@ -169,6 +194,9 @@ public class SingleFileUpload extends MessageComposite {
 		}
 	}
 
+	/**
+	 * Inits the.
+	 */
 	private void init() {
 		btnSubmit.setEnabled(false);
 		file.setName("filename");

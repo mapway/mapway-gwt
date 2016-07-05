@@ -15,21 +15,38 @@ import com.ksyzt.gwt.server.common.SiteUtil;
 import com.ksyzt.gwt.server.common.ZipUtility;
 import com.ksyzt.gwt.shared.module.SiteInformation;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class KsyztServer.
+ */
 public class KsyztServer implements ServletContextListener {
 
+	/** The rewritedata. */
 	public static List<RewriteData> REWRITEDATA = null;
 
+	/** The m timer. */
 	private Timer m_timer;
 
+	/**
+	 * Info.
+	 *
+	 * @param info the info
+	 */
 	private void info(String info) {
 		Logger.LOG.info(tag, info);
 	}
 
+	/* (non-Javadoc)
+	 * @see javax.servlet.ServletContextListener#contextDestroyed(javax.servlet.ServletContextEvent)
+	 */
 	@Override
 	public void contextDestroyed(ServletContextEvent arg0) {
 		m_timer.cancel();
 	}
 
+	/* (non-Javadoc)
+	 * @see javax.servlet.ServletContextListener#contextInitialized(javax.servlet.ServletContextEvent)
+	 */
 	@Override
 	public void contextInitialized(ServletContextEvent event) {
 
@@ -64,10 +81,18 @@ public class KsyztServer implements ServletContextListener {
 
 	}
 
+	/** The siteinfo. */
 	public static SiteInformation SITEINFO;
 
+	/** The tag. */
 	private static String tag = "SiteServer";
 
+	/**
+	 * Extract console resource.
+	 *
+	 * @param path the path
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
 	private void extractConsoleResource(String path) throws IOException {
 		String pathjar;
 		pathjar = ZipUtility.getClassFile(getClass());

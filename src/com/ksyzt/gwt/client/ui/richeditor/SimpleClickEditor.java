@@ -17,33 +17,47 @@ import com.ksyzt.gwt.client.event.MessageEvent;
 import com.ksyzt.gwt.client.event.MessageHandler;
 
 /**
- * 编辑 文本
  * 
- * setValue TEXT(包含回车符): \r\n ==> <br/>
- * HTML setValue HTML ==> HTML
- * 
- * 
- * 
- * @author zhangjianshe@navinfo.com
- * 
+ * @author zhangjianshe
+ *
  */
 public class SimpleClickEditor extends FlowPanel implements HasMessageHandlers {
 
+	/** The current editor. */
 	private static SimpleClickEditor currentEditor;
 
+	/* (non-Javadoc)
+	 * @see com.ksyzt.gwt.client.event.HasMessageHandlers#addMessageHandler(com.ksyzt.gwt.client.event.MessageHandler)
+	 */
 	public HandlerRegistration addMessageHandler(MessageHandler handler) {
 		return addHandler(handler, MessageEvent.TYPE);
 	}
 
+	/** The html panel. */
 	HTML htmlPanel;
 
+	/** The txt box. */
 	private static TextArea txtBox;
+	
+	/** The txt rich. */
 	private static RichEditor txtRich;
+	
+	/** The btn toggle. */
 	private Button btnToggle;
+	
+	/** The btn confirm. */
 	private Button btnConfirm;
+	
+	/** The tools. */
 	private HorizontalPanel tools;
+	
+	/** The m min width. */
 	private int mMinWidth;
+	
+	/** The m min height. */
 	private int mMinHeight;
+	
+	/** The btn confirm handler. */
 	private ClickHandler btnConfirmHandler = new ClickHandler() {
 
 		@Override
@@ -57,23 +71,26 @@ public class SimpleClickEditor extends FlowPanel implements HasMessageHandlers {
 	};
 
 	/**
-	 * 最小的宽度
-	 * 
-	 * @param w
+	 * 最小的宽度.
+	 *
+	 * @param w the new min width
 	 */
 	public void setMinWidth(int w) {
 		mMinWidth = w;
 	}
 
 	/**
-	 * 设置最小高度
-	 * 
-	 * @param h
+	 * 设置最小高度.
+	 *
+	 * @param h the new min height
 	 */
 	public void setMinHeight(int h) {
 		mMinHeight = h;
 	}
 
+	/**
+	 * Instantiates a new simple click editor.
+	 */
 	@UiConstructor
 	public SimpleClickEditor() {
 
@@ -106,28 +123,29 @@ public class SimpleClickEditor extends FlowPanel implements HasMessageHandlers {
 
 	}
 
+	/** The m user object. */
 	private Object m_userObject = null;
 
 	/**
-	 * 设置关联对象
-	 * 
-	 * @param obj
+	 * 设置关联对象.
+	 *
+	 * @param obj the new user object
 	 */
 	public void setUserObject(Object obj) {
 		m_userObject = obj;
 	}
 
 	/**
-	 * 获取关联对象
-	 * 
-	 * @return
+	 * 获取关联对象.
+	 *
+	 * @return the user object
 	 */
 	public Object getUserObject() {
 		return m_userObject;
 	}
 
 	/**
-	 * 进入编辑HTML模式
+	 * 进入编辑HTML模式.
 	 */
 	private void htmlEditMode() {
 
@@ -148,10 +166,10 @@ public class SimpleClickEditor extends FlowPanel implements HasMessageHandlers {
 	}
 
 	/**
-	 * 将HTML数据转化为 TEXT数据
-	 * 
-	 * @param str
-	 * @return
+	 * 将HTML数据转化为 TEXT数据.
+	 *
+	 * @param str the str
+	 * @return the string
 	 */
 	private String toTextValue(String str) {
 		str = str.replaceAll("<[bB]{1,1}[rR]{1,1}\\s*>", "\n");
@@ -161,7 +179,7 @@ public class SimpleClickEditor extends FlowPanel implements HasMessageHandlers {
 	}
 
 	/**
-	 * 进入编辑基本文本模式
+	 * 进入编辑基本文本模式.
 	 */
 	private void textEditMode() {
 
@@ -191,7 +209,7 @@ public class SimpleClickEditor extends FlowPanel implements HasMessageHandlers {
 	}
 
 	/**
-	 * 进入展示模式
+	 * 进入展示模式.
 	 */
 	public void canvasMode() {
 		hideTxtBox();
@@ -201,9 +219,13 @@ public class SimpleClickEditor extends FlowPanel implements HasMessageHandlers {
 		fireEvent(ev);
 	}
 
+	/** The comfirm reg. */
 	HandlerRegistration comfirmReg = null;
+	
+	/** The toggle reg. */
 	HandlerRegistration toggleReg = null;
 
+	/** The m html panel click. */
 	// 点击HTML内容
 	private ClickHandler mHtmlPanelClick = new ClickHandler() {
 		public void onClick(ClickEvent event) {
@@ -225,9 +247,7 @@ public class SimpleClickEditor extends FlowPanel implements HasMessageHandlers {
 		}
 	};
 
-	/**
-	 * 基本模式和HTML模式转换
-	 */
+	/** 基本模式和HTML模式转换. */
 	private ClickHandler btnToggleHandler = new ClickHandler() {
 
 		public void onClick(ClickEvent event) {
@@ -250,7 +270,7 @@ public class SimpleClickEditor extends FlowPanel implements HasMessageHandlers {
 	};
 
 	/**
-	 * 隐藏编辑HTML框
+	 * 隐藏编辑HTML框.
 	 */
 	private void hideTxtRich() {
 
@@ -266,7 +286,7 @@ public class SimpleClickEditor extends FlowPanel implements HasMessageHandlers {
 	}
 
 	/**
-	 * 隐藏编辑基本文本框
+	 * 隐藏编辑基本文本框.
 	 */
 	private void hideTxtBox() {
 
@@ -285,8 +305,10 @@ public class SimpleClickEditor extends FlowPanel implements HasMessageHandlers {
 	}
 
 	/**
-	 * @param text
-	 * @return
+	 * To html value.
+	 *
+	 * @param text the text
+	 * @return the string
 	 */
 	private String toHtmlValue(String text) {
 		text = text.replaceAll("&lt;", "<");
@@ -295,19 +317,36 @@ public class SimpleClickEditor extends FlowPanel implements HasMessageHandlers {
 		return text;
 	}
 
+	/**
+	 * Log.
+	 *
+	 * @param msg the msg
+	 */
 	private native final static void log(String msg)/*-{
 		console.log(msg);
 	}-*/;
 
+	/** The m b toggle click. */
 	boolean m_bToggleClick = false;
 
+	/** The Constant EDIT_HTML. */
 	private final static String EDIT_HTML = "编辑HTML";
+	
+	/** The Constant EDIT_TEXT. */
 	private final static String EDIT_TEXT = "编辑文本";
+	
+	/** The Constant EDIT_CONFITM. */
 	private final static String EDIT_CONFITM = "确定";
 
+	/** The m width. */
 	int mWidth;
+	
+	/** The m height. */
 	int mHeight;
 
+	/**
+	 * Sure text box.
+	 */
 	private void sureTextBox() {
 		if (txtBox == null) {
 			txtBox = new TextArea();
@@ -332,6 +371,9 @@ public class SimpleClickEditor extends FlowPanel implements HasMessageHandlers {
 
 	}
 
+	/**
+	 * Sure rich box.
+	 */
 	private void sureRichBox() {
 
 		if (txtRich == null) {
@@ -356,6 +398,11 @@ public class SimpleClickEditor extends FlowPanel implements HasMessageHandlers {
 
 	}
 
+	/**
+	 * Gets the value.
+	 *
+	 * @return the value
+	 */
 	public String getValue() {
 		String html = htmlPanel.getHTML();
 		if (html.equals(tip)) {
@@ -365,6 +412,11 @@ public class SimpleClickEditor extends FlowPanel implements HasMessageHandlers {
 		}
 	}
 
+	/**
+	 * Gets the html.
+	 *
+	 * @return the html
+	 */
 	public String getHtml() {
 		String html = htmlPanel.getHTML();
 		if (html.equals(tip)) {
@@ -374,12 +426,23 @@ public class SimpleClickEditor extends FlowPanel implements HasMessageHandlers {
 		}
 	}
 
+	/**
+	 * Sets the tip.
+	 *
+	 * @param tip the new tip
+	 */
 	public void setTip(String tip) {
 		this.tip = tip;
 	}
 
+	/** The tip. */
 	private String tip = "点击编辑...";
 
+	/**
+	 * Sets the value.
+	 *
+	 * @param text the new value
+	 */
 	public void setValue(String text) {
 
 		log(text);
@@ -391,6 +454,11 @@ public class SimpleClickEditor extends FlowPanel implements HasMessageHandlers {
 		htmlPanel.setHTML(html);
 	}
 
+	/**
+	 * Sets the html.
+	 *
+	 * @param html the new html
+	 */
 	public void setHtml(String html) {
 
 		if (html == null || html.equals("")) {
@@ -401,35 +469,49 @@ public class SimpleClickEditor extends FlowPanel implements HasMessageHandlers {
 		htmlPanel.setHTML(html);
 	}
 
+	/** The m style. */
 	String m_style = "";
 
+	/**
+	 * Sets the text box style.
+	 *
+	 * @param editstyle the new text box style
+	 */
 	public void setTextBoxStyle(String editstyle) {
 		m_style = editstyle;
 	}
 
+	/** The m enabled edit. */
 	private boolean m_enabledEdit = true;
 
+	/**
+	 * Sets the enable edit.
+	 *
+	 * @param v the new enable edit
+	 */
 	public void setEnableEdit(boolean v) {
 		m_enabledEdit = v;
 	}
 
+	/** The mb enable html. */
 	boolean mbEnableHtml = true;
 
 	/**
-	 * 是否允许HTML编辑
-	 * 
-	 * @param b
+	 * 是否允许HTML编辑.
+	 *
+	 * @param b the new enable HTML
 	 */
 	public void setEnableHTML(boolean b) {
 		mbEnableHtml = b;
 	}
 
+	/** The m toogle style name. */
 	private String mToogleStyleName = "toogleButton";
 
 	/**
-	 * 设置转换按钮样式
-	 * 
-	 * @param styleName
+	 * 设置转换按钮样式.
+	 *
+	 * @param styleName the new toggle style
 	 */
 	public void setToggleStyle(String styleName) {
 		mToogleStyleName = styleName;

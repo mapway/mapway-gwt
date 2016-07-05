@@ -27,15 +27,24 @@ import com.google.gwt.user.client.ui.Widget;
 import com.ksyzt.gwt.client.common.MessageComposite;
 import com.ksyzt.gwt.client.event.MessageEvent;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class ImageUploadPanel.
+ */
 public class ImageUploadPanel extends MessageComposite {
 
+	/** The ui binder. */
 	private static ImageUploadPanelUiBinder uiBinder = GWT
 			.create(ImageUploadPanelUiBinder.class);
 
+	/**
+	 * The Interface ImageUploadPanelUiBinder.
+	 */
 	interface ImageUploadPanelUiBinder extends
 			UiBinder<Widget, ImageUploadPanel> {
 	}
 
+	/** The m file change. */
 	private ChangeHandler m_file_change = new ChangeHandler() {
 
 		public void onChange(ChangeEvent event) {
@@ -55,6 +64,8 @@ public class ImageUploadPanel extends MessageComposite {
 			}
 		}
 	};
+	
+	/** The m submit handler. */
 	private SubmitHandler m_submit_handler = new SubmitHandler() {
 
 		public void onSubmit(SubmitEvent event) {
@@ -63,6 +74,7 @@ public class ImageUploadPanel extends MessageComposite {
 		}
 	};
 
+	/** The m submit complete handler. */
 	private SubmitCompleteHandler m_submit_complete_handler = new SubmitCompleteHandler() {
 
 		public void onSubmitComplete(SubmitCompleteEvent event) {
@@ -87,6 +99,12 @@ public class ImageUploadPanel extends MessageComposite {
 		}
 	};
 
+	/**
+	 * Can upload.
+	 *
+	 * @param ft the ft
+	 * @return true, if successful
+	 */
 	public boolean canUpload(String ft) {
 		boolean b = false;
 
@@ -104,6 +122,9 @@ public class ImageUploadPanel extends MessageComposite {
 		return b;
 	}
 
+	/**
+	 * Instantiates a new image upload panel.
+	 */
 	public ImageUploadPanel() {
 		initWidget(uiBinder.createAndBindUi(this));
 
@@ -117,21 +138,38 @@ public class ImageUploadPanel extends MessageComposite {
 		frmPanel.setVisible(false);
 	}
 
+	/** The txt URL. */
 	@UiField
 	TextBox txtURL;
+	
+	/** The btn upload. */
 	@UiField
 	Button btnUpload;
+	
+	/** The upload. */
 	@UiField
 	FileUpload upload;
+	
+	/** The frm panel. */
 	@UiField
 	FormPanel frmPanel;
+	
+	/** The lb message. */
 	@UiField
 	Label lbMessage;
 
+	/* (non-Javadoc)
+	 * @see com.ksyzt.gwt.client.common.MessageComposite#message(java.lang.String)
+	 */
 	public void message(String msg) {
 		lbMessage.setText(msg);
 	}
 
+	/**
+	 * On upload click.
+	 *
+	 * @param e the e
+	 */
 	@UiHandler("btnUpload")
 	void onUploadClick(ClickEvent e) {
 		if (btnUpload.getText().equals("上传")) {
@@ -146,6 +184,11 @@ public class ImageUploadPanel extends MessageComposite {
 	}
 
 
+	/**
+	 * On OK.
+	 *
+	 * @param e the e
+	 */
 	@UiHandler("btnOK")
 	void onOK(ClickEvent e) {
 		String url = txtURL.getValue();
@@ -158,27 +201,50 @@ public class ImageUploadPanel extends MessageComposite {
 		}
 	}
 
+	/**
+	 * On cancel.
+	 *
+	 * @param e the e
+	 */
 	@UiHandler("btnCancel")
 	void onCancel(ClickEvent e) {
 		MessageEvent ev = new MessageEvent(MessageEvent.CANCEL, null);
 		fireEvent(ev);
 	}
 
+	/** The txt width. */
 	@UiField
 	TextBox txtWidth;
+	
+	/** The txt height. */
 	@UiField
 	TextBox txtHeight;
+	
+	/** The txt border. */
 	@UiField
 	TextBox txtBorder;
+	
+	/** The txt H space. */
 	@UiField
 	TextBox txtHSpace;
+	
+	/** The txt V space. */
 	@UiField
 	TextBox txtVSpace;
+	
+	/** The txt replace text. */
 	@UiField
 	TextBox txtReplaceText;
+	
+	/** The ddl align. */
 	@UiField
 	ListBox ddlAlign;
 
+	/**
+	 * Gets the image attribute.
+	 *
+	 * @return the image attribute
+	 */
 	public String getImageAttribute() {
 		String r = "";
 		if (!txtWidth.getValue().equals("")) {

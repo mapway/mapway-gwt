@@ -28,8 +28,18 @@ import org.dom4j.Attribute;
 import org.dom4j.DocumentHelper;
 import org.dom4j.Element;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class Util.
+ */
 public class Util {
 
+	/**
+	 * Write to file.
+	 *
+	 * @param filename the filename
+	 * @param content the content
+	 */
 	public static void WriteToFile(String filename, byte[] content) {
 		try {
 			FileOutputStream fo = new FileOutputStream(filename);
@@ -44,6 +54,12 @@ public class Util {
 		}
 	}
 
+	/**
+	 * Read UTF 8 text file.
+	 *
+	 * @param fileName the file name
+	 * @return the string
+	 */
 	public static String readUTF8TextFile(String fileName) {
 		byte[] bytes = ReadFromFile(fileName);
 		String str = "";
@@ -56,6 +72,13 @@ public class Util {
 		return str;
 	}
 
+	/**
+	 * Read text file.
+	 *
+	 * @param fileName the file name
+	 * @param encoding the encoding
+	 * @return the string
+	 */
 	public static String readTextFile(String fileName, String encoding) {
 		byte[] bytes = ReadFromFile(fileName);
 		String str = "";
@@ -68,6 +91,12 @@ public class Util {
 		return str;
 	}
 
+	/**
+	 * Read from file.
+	 *
+	 * @param fileName the file name
+	 * @return the byte[]
+	 */
 	public static byte[] ReadFromFile(String fileName) {
 
 		File ff = new java.io.File(fileName);
@@ -89,6 +118,11 @@ public class Util {
 		return code;
 	}
 
+	/**
+	 * Gets the local IP.
+	 *
+	 * @return the local IP
+	 */
 	private String getLocalIP() {
 		Enumeration<NetworkInterface> netinterfaces;
 		try {
@@ -115,10 +149,22 @@ public class Util {
 		return Util.randomDigital(15);
 	}
 
+	/**
+	 * Text.
+	 *
+	 * @param e the e
+	 * @param v the v
+	 */
 	public static void text(Element e, String v) {
 		e.add(DocumentHelper.createText(v));
 	}
 
+	/**
+	 * Int 2 path.
+	 *
+	 * @param v the v
+	 * @return the string
+	 */
 	public final static String int2path(int v) {
 		String id = v + "";
 		String str = "";
@@ -128,6 +174,13 @@ public class Util {
 		return str;
 	}
 
+	/**
+	 * Copy file.
+	 *
+	 * @param fileFromPath the file from path
+	 * @param fileToPath the file to path
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
 	public static void copyFile(String fileFromPath, String fileToPath)
 			throws IOException {
 		InputStream in = null;
@@ -150,6 +203,13 @@ public class Util {
 
 	}
 
+	/**
+	 * Attr.
+	 *
+	 * @param e the e
+	 * @param name the name
+	 * @param v the v
+	 */
 	public static void attr(Element e, String name, String v) {
 		if (name == null || name.equals(""))
 			return;
@@ -164,6 +224,12 @@ public class Util {
 		}
 	}
 
+	/**
+	 * Write string to file.
+	 *
+	 * @param fn the fn
+	 * @param dest the dest
+	 */
 	public static void WriteStringToFile(String fn, String dest) {
 
 		FileOutputStream fo = null;
@@ -178,6 +244,13 @@ public class Util {
 		}
 	}
 
+	/**
+	 * Write to file.
+	 *
+	 * @param source the source
+	 * @param dest the dest
+	 * @return the string
+	 */
 	public static String writeToFile(File source, String dest) {
 		String r = "true";
 		FileOutputStream fo = null;
@@ -217,6 +290,13 @@ public class Util {
 		return r;
 	}
 
+	/**
+	 * Read text file.
+	 *
+	 * @param source the source
+	 * @return the string
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
 	public static String readTextFile(File source) throws IOException {
 
 		String text = "";
@@ -235,6 +315,13 @@ public class Util {
 		return text;
 	}
 
+	/**
+	 * Read from file.
+	 *
+	 * @param source the source
+	 * @return the string builder
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
 	public static StringBuilder readFromFile(File source) throws IOException {
 
 		StringBuilder sb = new StringBuilder();
@@ -253,6 +340,11 @@ public class Util {
 		return sb;
 	}
 
+	/**
+	 * Gets the local address.
+	 *
+	 * @return the local address
+	 */
 	public static String getLocalAddress() {
 		Enumeration<NetworkInterface> allNetInterfaces;
 		try {
@@ -279,6 +371,12 @@ public class Util {
 		return ips;
 	}
 
+	/**
+	 * Gets the head icon path by id.
+	 *
+	 * @param id the id
+	 * @return the head icon path by id
+	 */
 	public static String getHeadIconPathById(int id) {
 		String si = String.valueOf(id);
 		StringBuilder sb = new StringBuilder(32);
@@ -290,11 +388,27 @@ public class Util {
 		return sb.toString();
 	}
 
+	/**
+	 * Gets the diff year.
+	 *
+	 * @param start the start
+	 * @param end the end
+	 * @return the diff year
+	 */
 	public static int getDiffYear(java.sql.Timestamp start,
 			java.sql.Timestamp end) {
 		return end.getYear() - start.getYear();
 	}
 
+	/**
+	 * Adds the time.
+	 *
+	 * @param start the start
+	 * @param year the year
+	 * @param month the month
+	 * @param day the day
+	 * @return the java.sql. timestamp
+	 */
 	public static java.sql.Timestamp addTime(java.sql.Timestamp start,
 			int year, int month, int day) {
 		return new java.sql.Timestamp(start.getTime() + year * 365 * 24 * 60
@@ -303,8 +417,9 @@ public class Util {
 	}
 
 	/**
-	 * 
-	 * @return
+	 * Gets the current SQL timestamp.
+	 *
+	 * @return the current SQL timestamp
 	 */
 	public static final java.sql.Timestamp getCurrentSQLTimestamp() {
 		Calendar c = Calendar.getInstance();
@@ -312,11 +427,23 @@ public class Util {
 		return t;
 	}
 
+	/**
+	 * To SQL timestamp.
+	 *
+	 * @param time the time
+	 * @return the java.sql. timestamp
+	 */
 	public static final java.sql.Timestamp toSQLTimestamp(String time) {
 
 		return java.sql.Timestamp.valueOf(time);
 	}
 
+	/**
+	 * To SQL timestamp 2.
+	 *
+	 * @param time the time
+	 * @return the java.sql. timestamp
+	 */
 	public static final java.sql.Timestamp toSQLTimestamp2(String time) {
 
 		Date d = getStrDate(time);
@@ -324,6 +451,12 @@ public class Util {
 
 	}
 
+	/**
+	 * Date to SQL timestamp.
+	 *
+	 * @param date the date
+	 * @return the timestamp
+	 */
 	public static Timestamp dateToSQLTimestamp(Date date) {
 		if (date == null) {
 			return java.sql.Timestamp.valueOf("2070-06-06 12:00:00");
@@ -342,8 +475,8 @@ public class Util {
 	 * <p>
 	 * ����һ����ǰ��ʱ�䣬������ʽת��Ϊ�ַ�
 	 * </p>
-	 * ��17:27:03
-	 * 
+	 * ��17:27:03.
+	 *
 	 * @return String
 	 */
 	public static String getNowTime() {
@@ -358,8 +491,8 @@ public class Util {
 	 * <p>
 	 * ����һ����ǰ���ڣ�������ʽת��Ϊ�ַ�
 	 * </p>
-	 * ��2004-4-30
-	 * 
+	 * ��2004-4-30.
+	 *
 	 * @return String
 	 */
 	public static String getNowDate() {
@@ -374,8 +507,8 @@ public class Util {
 	 * <p>
 	 * ����һ����ǰ���ڣ�������ʽת��Ϊ�ַ�
 	 * </p>
-	 * ��2004-4-30
-	 * 
+	 * ��2004-4-30.
+	 *
 	 * @return String
 	 */
 	public static Date getNow() {
@@ -388,8 +521,8 @@ public class Util {
 	 * <p>
 	 * ����һ����ǰ���ڣ�������ʽת��Ϊ�ַ�
 	 * </p>
-	 * ��2004-4-30
-	 * 
+	 * ��2004-4-30.
+	 *
 	 * @return String
 	 */
 	public static java.sql.Date getNowDate2() {
@@ -403,8 +536,8 @@ public class Util {
 	 * <p>
 	 * ����һ����ǰ���ں�ʱ�䣬������ʽת��Ϊ�ַ�
 	 * </p>
-	 * ��2004-4-30 17:27:03
-	 * 
+	 * ��2004-4-30 17:27:03.
+	 *
 	 * @return String
 	 */
 	public static String getNowDateTime() {
@@ -418,8 +551,8 @@ public class Util {
 	/**
 	 * <p>
 	 * ���ص�ǰ��
-	 * </p>
-	 * 
+	 * </p>.
+	 *
 	 * @return int
 	 */
 	public static int getThisYear() {
@@ -428,8 +561,8 @@ public class Util {
 	}
 
 	/**
-	 * ���ر���
-	 * 
+	 * ���ر���.
+	 *
 	 * @return int
 	 */
 	public static int getThisMonth() {
@@ -438,8 +571,8 @@ public class Util {
 	}
 
 	/**
-	 * ���ؽ����Ǳ��µĵڼ���
-	 * 
+	 * ���ؽ����Ǳ��µĵڼ���.
+	 *
 	 * @return int ��1��ʼ
 	 */
 	public static int getToDayOfMonth() {
@@ -448,8 +581,8 @@ public class Util {
 	}
 
 	/**
-	 * ���ص�ǰ��Сʱ
-	 * 
+	 * ���ص�ǰ��Сʱ.
+	 *
 	 * @return int
 	 */
 	public static int getHour() {
@@ -458,8 +591,8 @@ public class Util {
 	}
 
 	/**
-	 * ���ص�ǰ�ķ���
-	 * 
+	 * ���ص�ǰ�ķ���.
+	 *
 	 * @return int ���ص�ǰ�ķ���
 	 */
 	public static int getMinute() {
@@ -468,8 +601,8 @@ public class Util {
 	}
 
 	/**
-	 * ���ص�ǰ������
-	 * 
+	 * ���ص�ǰ������.
+	 *
 	 * @return int �ڼ���
 	 */
 	public static int getSecond() {
@@ -478,8 +611,8 @@ public class Util {
 	}
 
 	/**
-	 * ���ؽ����Ǳ���ĵڼ���
-	 * 
+	 * ���ؽ����Ǳ���ĵڼ���.
+	 *
 	 * @return int ��1��ʼ
 	 */
 
@@ -489,10 +622,9 @@ public class Util {
 	}
 
 	/**
-	 * ����һ��ʽ��������
-	 * 
-	 * @param time
-	 *            long
+	 * ����һ��ʽ��������.
+	 *
+	 * @param date the date
 	 * @return String yyyy-mm-dd ��ʽ
 	 */
 	public static String formatDate(java.util.Date date) {
@@ -503,10 +635,9 @@ public class Util {
 	}
 
 	/**
-	 * ����һ��ʽ��������
-	 * 
-	 * @param time
-	 *            long
+	 * ����һ��ʽ��������.
+	 *
+	 * @param date the date
 	 * @return String 2005-6-17 ��ʽ
 	 */
 	public static String formatSDate(java.util.Date date) {
@@ -520,14 +651,11 @@ public class Util {
 	}
 
 	/**
-	 * ���������ָ��ʱ����������
-	 * 
-	 * @param interval
-	 *            ��ʾҪ��ӵ�ʱ����("y":��;"d":��;"m":��;���б�Ҫ������������)
-	 * @param number
-	 *            ��ʾҪ��ӵ�ʱ�����ĸ���
-	 * @param date
-	 *            java.util.Date()
+	 * ���������ָ��ʱ����������.
+	 *
+	 * @param interval            ��ʾҪ��ӵ�ʱ����("y":��;"d":��;"m":��;���б�Ҫ������������)
+	 * @param number            ��ʾҪ��ӵ�ʱ�����ĸ���
+	 * @param date            java.util.Date()
 	 * @return String 2005-5-12��ʽ�������ִ�
 	 */
 	public static String dateAdd(String interval, int number,
@@ -564,12 +692,10 @@ public class Util {
 	/**
 	 * <p>
 	 * ������������֮��ĵ�λ�����
-	 * </p>
-	 * 
-	 * @param a
-	 *            java.util.Date
-	 * @param b
-	 *            java.util.Date
+	 * </p>.
+	 *
+	 * @param a            java.util.Date
+	 * @param b            java.util.Date
 	 * @return int �����
 	 */
 	public static int dateDiff(java.util.Date a, java.util.Date b) {
@@ -606,19 +732,14 @@ public class Util {
 		return difference;
 	}
 
+	
 	/**
-	 * <p>
-	 * �÷����ǻ�õ�ÿ��1������һ�����
-	 * </p>
-	 * 
-	 * @return -����һ������
-	 */
-	/**
-	 * <p>
-	 * �÷����ǻ�õ�ÿ��1������һ�����
-	 * </p>
-	 * 
-	 * @return -����һ������
+	 * Gets the date.
+	 *
+	 * @param curYear the cur year
+	 * @param curMonth the cur month
+	 * @param curDate the cur date
+	 * @return the date
 	 */
 	public static int getDate(int curYear, int curMonth, int curDate) {
 		int day1 = 0;
@@ -653,6 +774,12 @@ public class Util {
 		return day1;
 	}
 
+	/**
+	 * Check time.
+	 *
+	 * @param id the id
+	 * @return the string
+	 */
 	public static String checkTime(int id) {
 		String bol = "";
 		Calendar tt = Calendar.getInstance();
@@ -687,10 +814,9 @@ public class Util {
 	/**
 	 * <p>
 	 * �÷����ǽ��ַ���ת���������
-	 * </p>
-	 * 
-	 * @param strX
-	 *            -�����ַ�����
+	 * </p>.
+	 *
+	 * @param strX            -�����ַ�����
 	 * @return -������������
 	 */
 	public static Date getStrDate(String strX) {
@@ -711,13 +837,11 @@ public class Util {
 	}
 
 	/**
-	 * <p>
-	 * �Ƚ��������ַ�Ĵ�С
-	 * </p>
-	 * 
-	 * @param d1
-	 * @param d2
-	 * @return (d1>d2)?2:(d1=d2)?1:0
+	 * Compare date.
+	 *
+	 * @param d1 the d 1
+	 * @param d2 the d 2
+	 * @return the int
 	 */
 	public static int compareDate(String d1, String d2) {
 		short vl = 1;
@@ -754,9 +878,11 @@ public class Util {
 	}
 
 	/**
-	 * 
-	 * @param l
-	 * @return
+	 * Gets the date string.
+	 *
+	 * @param l the l
+	 * @param format the format
+	 * @return the date string
 	 */
 	public static String getDateString(long l, String format) {
 		String v = new SimpleDateFormat(format).format(new Date(l));
@@ -806,6 +932,12 @@ public class Util {
 		return new String(randBuffer);
 	}
 
+	/**
+	 * Random digital.
+	 *
+	 * @param length the length
+	 * @return the string
+	 */
 	public static final String randomDigital(int length) {
 		if (length < 1) {
 			return null;
@@ -818,10 +950,22 @@ public class Util {
 		return new String(randBuffer);
 	}
 
+	/**
+	 * Random number.
+	 *
+	 * @param max the max
+	 * @return the int
+	 */
 	public static final int randomNumber(int max) {
 		return randGen.nextInt(max);
 	}
 
+	/**
+	 * Gets the string.
+	 *
+	 * @param o the o
+	 * @return the string
+	 */
 	public static String getString(Object o) {
 		if (o == null) {
 			return "NULL";
@@ -830,6 +974,13 @@ public class Util {
 		}
 	}
 
+	/**
+	 * Format integer.
+	 *
+	 * @param i the i
+	 * @param j the j
+	 * @return the string
+	 */
 	public static String formatInteger(int i, int j) {
 		String frm = "%0" + j + "d";
 		String s;
@@ -837,14 +988,31 @@ public class Util {
 		return s;
 	}
 
+	/**
+	 * Valueoftime.
+	 *
+	 * @param b the b
+	 * @return the timestamp
+	 */
 	public static Timestamp valueoftime(String b) {
 		return Timestamp.valueOf(b + " 00:00:00.000000000");
 	}
 
+	/**
+	 * Valueoftime 2.
+	 *
+	 * @param b the b
+	 * @return the timestamp
+	 */
 	public static Timestamp valueoftime2(String b) {
 		return Timestamp.valueOf(b + " 24:00:00.000000000");
 	}
 
+	/**
+	 * The main method.
+	 *
+	 * @param args the arguments
+	 */
 	public static void main(String[] args) {
 		GregorianCalendar gcNow = new GregorianCalendar();
 		java.util.Date dNow = gcNow.getTime();
@@ -853,6 +1021,12 @@ public class Util {
 		System.out.println(t);
 	}
 
+	/**
+	 * Escape.
+	 *
+	 * @param src the src
+	 * @return the string
+	 */
 	public static String escape(String src) {
 		int i;
 		char j;
@@ -876,6 +1050,12 @@ public class Util {
 		return tmp.toString();
 	}
 
+	/**
+	 * Unescape.
+	 *
+	 * @param src the src
+	 * @return the string
+	 */
 	public static String unescape(String src) {
 		StringBuffer tmp = new StringBuffer();
 		tmp.ensureCapacity(src.length());

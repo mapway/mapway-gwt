@@ -32,26 +32,39 @@ import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.Widget;
 import com.ksyzt.gwt.client.event.MessageEvent;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class ImageUploader.
+ */
 public class ImageUploader extends MessageComposite {
 
+	/** The ui binder. */
 	private static ImageUploaderUiBinder uiBinder = GWT
 			.create(ImageUploaderUiBinder.class);
 
+	/**
+	 * The Interface ImageUploaderUiBinder.
+	 */
 	interface ImageUploaderUiBinder extends UiBinder<Widget, ImageUploader> {
 	}
 
+	/** The root. */
 	@UiField
 	AbsolutePanel root;
 
+	/** The btn cancel. */
 	@UiField
 	Button btnCancel;
 
+	/** The m image click. */
 	private ClickHandler m_image_click = new ClickHandler() {
 
 		public void onClick(ClickEvent event) {
 			panelLoader.setVisible(true);
 		}
 	};
+	
+	/** The m cancel click. */
 	ClickHandler m_cancel_click = new ClickHandler() {
 
 		public void onClick(ClickEvent event) {
@@ -60,8 +73,11 @@ public class ImageUploader extends MessageComposite {
 		}
 	};
 
+	/** The info. */
 	@UiField
 	Label info;
+	
+	/** The m mouse over. */
 	private MouseOverHandler m_mouse_over = new MouseOverHandler() {
 
 		public void onMouseOver(MouseOverEvent event) {
@@ -72,6 +88,7 @@ public class ImageUploader extends MessageComposite {
 		}
 	};
 
+	/** The m mouse out. */
 	MouseOutHandler m_mouse_out = new MouseOutHandler() {
 
 		public void onMouseOut(MouseOutEvent event) {
@@ -79,6 +96,9 @@ public class ImageUploader extends MessageComposite {
 		}
 	};
 
+	/**
+	 * Instantiates a new image uploader.
+	 */
 	@UiConstructor
 	public ImageUploader() {
 		initWidget(uiBinder.createAndBindUi(this));
@@ -102,6 +122,12 @@ public class ImageUploader extends MessageComposite {
 
 	}
 
+	/**
+	 * Can upload.
+	 *
+	 * @param ft the ft
+	 * @return true, if successful
+	 */
 	public boolean canUpload(String ft) {
 		boolean b = false;
 
@@ -119,6 +145,7 @@ public class ImageUploader extends MessageComposite {
 		return b;
 	}
 
+	/** The m file change. */
 	private ChangeHandler m_file_change = new ChangeHandler() {
 
 		public void onChange(ChangeEvent event) {
@@ -139,12 +166,16 @@ public class ImageUploader extends MessageComposite {
 		}
 	};
 
+	/* (non-Javadoc)
+	 * @see com.ksyzt.gwt.client.common.MessageComposite#message(java.lang.String)
+	 */
 	public void message(String msg) {
 		MessageEvent ev = new MessageEvent(MessageEvent.MESSAGE, msg);
 		fireEvent(ev);
 	}
 
 	
+	/** The m submit handler. */
 	private SubmitHandler m_submit_handler = new SubmitHandler() {
 
 		public void onSubmit(SubmitEvent event) {
@@ -152,8 +183,11 @@ public class ImageUploader extends MessageComposite {
 		}
 	};
 
+	/** The html. */
 	@UiField
 	HTML html;
+	
+	/** The m submit complete handler. */
 	private SubmitCompleteHandler m_submit_complete_handler = new SubmitCompleteHandler() {
 
 		public void onSubmitComplete(SubmitCompleteEvent event) {
@@ -184,20 +218,35 @@ public class ImageUploader extends MessageComposite {
 			panelLoader.setVisible(false);
 		}
 	};
+	
+	/** The panel loader. */
 	@UiField
 	FlowPanel panelLoader;
 
+	/** The uploader. */
 	@UiField
 	FileUpload uploader;
 
+	/** The thumb width. */
 	@UiField
 	Hidden thumbWidth;
+	
+	/** The thumb height. */
 	@UiField
 	Hidden thumbHeight;
 
+	/** The m height. */
 	int m_height = 334;
+	
+	/** The m width. */
 	int m_width = 228;
 
+	/**
+	 * Sets the thumb size.
+	 *
+	 * @param w the w
+	 * @param h the h
+	 */
 	public void setThumbSize(int w, int h) {
 		if (w > 0) {
 			m_width = w;
@@ -207,12 +256,14 @@ public class ImageUploader extends MessageComposite {
 		}
 	}
 
+	/** The form. */
 	@UiField
 	FormPanel form;
 
 	/**
-	 * 设置初始化图像
-	 * @param url
+	 * 设置初始化图像.
+	 *
+	 * @param url the new image
 	 */
 	public void setImage(String url) {
 		if (url == null || url.length() == 0) {
@@ -234,13 +285,14 @@ public class ImageUploader extends MessageComposite {
 		panelLoader.setVisible(false);
 	}
 
+	/** The btn remove picture. */
 	@UiField
 	Button btnRemovePicture;
 
 	/**
-	 * 删除新闻图片
-	 * 
-	 * @param e
+	 * 删除新闻图片.
+	 *
+	 * @param e the e
 	 */
 	@UiHandler("btnRemovePicture")
 	void onbtnRemovePicture(ClickEvent e) {
@@ -248,18 +300,22 @@ public class ImageUploader extends MessageComposite {
 		fireEvent(ev);
 	}
 
+	/**
+	 * Reset.
+	 */
 	public void reset() {
 		form.reset();
 		thumbHeight.setValue(m_height + "");
 		thumbWidth.setValue(m_width + "");
 	}
 
+	/** The m url. */
 	private String mUrl = "";
 
 	/**
-	 * 获取图像Url
-	 * 
-	 * @return
+	 * 获取图像Url.
+	 *
+	 * @return the image relative url
 	 */
 	public String getImageRelativeUrl() {
 		return mUrl;

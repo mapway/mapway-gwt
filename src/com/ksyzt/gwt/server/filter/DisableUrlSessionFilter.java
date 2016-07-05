@@ -7,8 +7,15 @@ import javax.servlet.http.HttpServletResponseWrapper;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class DisableUrlSessionFilter.
+ */
 public class DisableUrlSessionFilter implements Filter {
 
+	/* (non-Javadoc)
+	 * @see javax.servlet.Filter#doFilter(javax.servlet.ServletRequest, javax.servlet.ServletResponse, javax.servlet.FilterChain)
+	 */
 	public void doFilter(ServletRequest request, ServletResponse response,
 			FilterChain chain) throws IOException, ServletException {
 		// skip non-http requests
@@ -54,6 +61,9 @@ public class DisableUrlSessionFilter implements Filter {
 
 	/**
 	 * Unused.
+	 *
+	 * @param config the config
+	 * @throws ServletException the servlet exception
 	 */
 	public void init(FilterConfig config) throws ServletException {
 	}

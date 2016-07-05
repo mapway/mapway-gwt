@@ -11,12 +11,25 @@ import com.google.gwt.user.client.ui.HasHorizontalAlignment;
 import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.VerticalPanel;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class Alert.
+ */
 public class Alert extends DialogBox {
 
+	/**
+	 * Instantiates a new alert.
+	 */
 	public Alert() {
 
 	}
 
+	/**
+	 * Instantiates a new alert.
+	 *
+	 * @param caption the caption
+	 * @param msg the msg
+	 */
 	public Alert(String caption, String msg) {
 		this.setHTML(caption);
 
@@ -39,6 +52,7 @@ public class Alert extends DialogBox {
 		this.setGlassEnabled(true);
 	}
 
+	/** The btn ok handler. */
 	ClickHandler btn_ok_handler = new ClickHandler() {
 
 		@Override

@@ -17,41 +17,73 @@ import com.ksyzt.gwt.client.common.MessageComposite;
 import com.ksyzt.gwt.client.event.MessageEvent;
 import com.ksyzt.gwt.shared.module.SiteInformation;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class PageSiteInfo.
+ */
 public class PageSiteInfo extends MessageComposite {
 
+	/** The m siteinfo. */
 	SiteInformation m_siteinfo;
 
+	/** The ui binder. */
 	private static PageSiteInfoUiBinder uiBinder = GWT
 			.create(PageSiteInfoUiBinder.class);
 
+	/**
+	 * The Interface PageSiteInfoUiBinder.
+	 */
 	interface PageSiteInfoUiBinder extends UiBinder<Widget, PageSiteInfo> {
 	}
 
+	/**
+	 * Instantiates a new page site info.
+	 */
 	public PageSiteInfo() {
 		initWidget(uiBinder.createAndBindUi(this));
 	}
 
+	/** The txt NAME. */
 	@UiField
 	TextBox txtNAME;
+	
+	/** The txt DESC. */
 	@UiField
 	TextBox txtDESC;
+	
+	/** The txt ICP. */
 	@UiField
 	TextBox txtICP;
+	
+	/** The txt sec NO. */
 	@UiField
 	TextBox txtSecNO;
+	
+	/** The txt TEL. */
 	@UiField
 	TextBox txtTEL;
+	
+	/** The txt EMAIL. */
 	@UiField
 	TextBox txtEMAIL;
+	
+	/** The txt OWNER. */
 	@UiField
 	TextBox txtOWNER;
+	
+	/** The txt KEYWORD. */
 	@UiField
 	TextBox txtKEYWORD;
+	
+	/** The check allow reg. */
 	@UiField
 	CheckBox checkAllowReg;
+	
+	/** The txt SITEURL. */
 	@UiField
 	TextBox txtSITEURL;
 
+	/** The m on site info. */
 	private AsyncCallback<SiteInformation> m_on_site_info = new AsyncCallback<SiteInformation>() {
 
 		@Override
@@ -77,6 +109,11 @@ public class PageSiteInfo extends MessageComposite {
 		}
 	};
 
+	/**
+	 * On save.
+	 *
+	 * @param e the e
+	 */
 	@UiHandler("btnSave")
 	void onSave(ClickEvent e) {
 		if (m_siteinfo == null) {
@@ -97,13 +134,19 @@ public class PageSiteInfo extends MessageComposite {
 		}
 	}
 
+	/**
+	 * Refresh.
+	 */
 	public void refresh() {
 		CommonServerProxy.SITE_MANAGER.getSiteInformation(m_on_site_info);
 
 	}
 
+	/** The btn update bottom. */
 	@UiField
 	Button btnUpdateBottom;
+	
+	/** The on update template handler. */
 	private AsyncCallback<String> on_update_template_handler = new AsyncCallback<String>() {
 
 		public void onSuccess(String result) {
@@ -117,14 +160,23 @@ public class PageSiteInfo extends MessageComposite {
 		}
 	};
 
+	/**
+	 * On update bottom.
+	 *
+	 * @param event the event
+	 */
 	@UiHandler("btnUpdateBottom")
 	void onUpdateBottom(ClickEvent event) {
 		// CommonServerProxy.SITE_MANAGER.updateTemplate(on_update_template_handler);
 	}
 
+	/** The lb message. */
 	@UiField
 	Label lbMessage;
 
+	/* (non-Javadoc)
+	 * @see com.ksyzt.gwt.client.common.MessageComposite#message(java.lang.String)
+	 */
 	public void message(String msg) {
 		MessageEvent ev = new MessageEvent(MessageEvent.MESSAGE, msg);
 		fireEvent(ev);

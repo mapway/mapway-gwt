@@ -13,20 +13,25 @@ import com.ksyzt.gwt.client.common.MessageComposite;
 import com.ksyzt.gwt.client.event.MessageEvent;
 import com.ksyzt.gwt.client.event.MessageHandler;
 
+// TODO: Auto-generated Javadoc
 /**
- * 应用程序主框架
- * 
+ * 应用程序主框架.
+ *
  * @author Administrator
- * 
  */
 public class MainFrame extends MessageComposite {
 
+	/** The ui binder. */
 	private static MainFrameUiBinder uiBinder = GWT
 			.create(MainFrameUiBinder.class);
 
+	/**
+	 * The Interface MainFrameUiBinder.
+	 */
 	interface MainFrameUiBinder extends UiBinder<Widget, MainFrame> {
 	}
 
+	/** The m topbar handler. */
 	private MessageHandler m_topbar_handler = new MessageHandler() {
 
 		@Override
@@ -46,9 +51,9 @@ public class MainFrame extends MessageComposite {
 	};
 
 	/**
-	 * 切换页面
-	 * 
-	 * @param v
+	 * 切换页面.
+	 *
+	 * @param d the d
 	 */
 	protected void switch_page(ModuleData d) {
 
@@ -67,29 +72,48 @@ public class MainFrame extends MessageComposite {
 		}
 	}
 
+	/**
+	 * Instantiates a new main frame.
+	 */
 	public MainFrame() {
 		initWidget(uiBinder.createAndBindUi(this));
 		topbar.addMessageHandler(m_topbar_handler);
 		modules = new ArrayList<ModuleData>();
 	}
 
+	/** The topbar. */
 	@UiField
 	AppTopbar topbar;
 
+	/** The current. */
 	Widget current;
 
+	/** The root. */
 	@UiField
 	DockLayoutPanel root;
 
+	/** The modules. */
 	List<ModuleData> modules;
 
+	/** The application. */
 	AppData application;
 
+	/**
+	 * Sets the application.
+	 *
+	 * @param app the new application
+	 */
 	public void setApplication(AppData app) {
 		application = app;
 		topbar.initTop(application.user.realname, app.user.id);
 	}
 
+	/**
+	 * Adds the module factory.
+	 *
+	 * @param mf the mf
+	 * @param props the props
+	 */
 	public void addModuleFactory(IModuleFactory mf, ModuleProperties props) {
 
 		ModuleData d = new ModuleData(application, mf, props);
@@ -97,6 +121,11 @@ public class MainFrame extends MessageComposite {
 		topbar.addTab(d);
 	}
 
+	/**
+	 * Show module.
+	 *
+	 * @param index the index
+	 */
 	public void showModule(int index) {
 		if (index >= 0 && index < modules.size()) {
 			switch_page(modules.get(index));
