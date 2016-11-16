@@ -6,7 +6,7 @@ import com.ksyzt.gwt.client.event.HasMessageHandlers;
 import com.ksyzt.gwt.client.event.MessageEvent;
 import com.ksyzt.gwt.client.event.MessageHandler;
 
-// TODO: Auto-generated Javadoc
+
 /**
  * 能够处理消息的界面UI.
  *

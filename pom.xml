@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>cn.mapway</groupId>
 	<artifactId>mapway-gwt</artifactId>
-	<version>0.0.2</version>
+	<version>0.0.5</version>
 	<name>mapway-gwt</name>
 
 
@@ -45,6 +45,7 @@
 				<directory>src</directory>
 				<includes>
 					<include>**/*.java</include>
+					<include>**/*.xml</include>
 				</includes>
 			</resource>
 		</resources>
@@ -108,6 +109,14 @@
 		<profile>
 			<id>release</id>
 			<build>
+				<resources>
+					<resource>
+						<directory>src</directory>
+						<includes>
+							<include>**/*.java</include>
+						</includes>
+					</resource>
+				</resources>
 				<plugins>
 					<!-- Source -->
 					<plugin>
