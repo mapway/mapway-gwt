@@ -16,5 +16,5 @@ public interface IFieldValue {
 	 *            如果fieldName=null 或者 fieldName.length()==0 取此值
 	 * @return
 	 */
-	public Object getFieldValue(String fieldName, int fieldIndex);
+	public Object getFieldValue(String fieldName, Integer fieldIndex);
 }
